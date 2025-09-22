@@ -9,8 +9,12 @@
         Title="MainWindow" Height="450" Width="800"
         >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
         <!-- Hola bon dia -->
-        <TextBox x:Name="txtSortida"  ></TextBox>
-
+        <TextBox Grid.Row="0" x:Name="txtSortida"  ></TextBox>
+        <ComboBox x:Name="cboMesos" Grid.Row="1"></ComboBox>
     </Grid>
 </Window>

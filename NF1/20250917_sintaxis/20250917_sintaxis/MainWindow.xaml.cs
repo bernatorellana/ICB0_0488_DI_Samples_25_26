@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,23 @@ namespace _20250917_sintaxis
             mostra(dataPersonalitzada.ToString("dd/MM/yy"));
             mostra(dataPersonalitzada.ToString("dddd, dd  MMMM \\de yyyy"));
 
+            //=====================0
+            // Dies de la setmana en català
+            DateTime d = new DateTime(2000, 1, 1);
+            for(int i = 0; i < 12; i++)
+            {
+                mostra(d.ToString("MMMM", new CultureInfo("de")));
+                d=d.AddMonths(1);
+
+            }
+            // V2
+            for (int i = 0; i < 12; i++)
+            {
+                String nomMes = (new DateTime(2000, i + 1, 1)).ToString("MMMM");
+                mostra(nomMes);
+
+                cboMesos.Items.Add(nomMes);
+            }
         }
 
         private void mostra(string nom)
