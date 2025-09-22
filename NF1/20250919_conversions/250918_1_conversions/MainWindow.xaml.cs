@@ -114,16 +114,9 @@ namespace _250918_1_conversions
         void mostraError(bool correcte, TextBox textbox, Label label,
             String missatgeOk, String missatgeError)
         {
-            if (correcte)
-            {
-                label.Content = missatgeOk;
-                textbox.Background = new SolidColorBrush(Colors.Lime);
-            }
-            else
-            {
-                label.Content = missatgeError;
-                textbox.Background = new SolidColorBrush(Colors.Red);
-            }
+
+            label.Content        = correcte ? missatgeOk : missatgeError;
+            textbox.Background   = new SolidColorBrush(correcte ? Colors.Lime : Colors.Red);             
         }
     }
 }
