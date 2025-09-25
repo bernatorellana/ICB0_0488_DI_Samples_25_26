@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,38 @@ namespace _20250922_Classes
             lsbPersones.ItemsSource = nomsEnLlista;
 
 
-            Persona p = new Persona(12, "1111111H", "Paco", "Martínez");
-            p.NIF1 = "11111111H";
+            Persona p1 = new Persona(12, "11111111H", "Paco", "Martínez");
+            Persona p2 = new Persona(13, "12345678Z", "Maria", "Sánchez");
+            Persona p3 = new Persona(14, "22222222J", "Cristina", "Rius");
+
+            ObservableCollection<Persona> persones = new ObservableCollection<Persona>();
+            persones.Add(p1);
+            persones.Add(p2);
+            persones.Add(p3);
+
+            string nc = persones[0].NomComplet;
+
+            persones.Contains(p1); //cert
+            bool existeix = persones.Contains(new Persona(0, "11111111H", "xxx", "xxx")); //cert?
+
+            cboPersones.ItemsSource = persones;
+            lsbPersones.ItemsSource = persones;
+
+            persones.Add(p1);
+
+        
+
+
+
+        }
+
+
+        private void cboPersones_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Persona personaSeleccionada = (Persona)cboPersones.SelectedItem;
+            MessageBox.Show(personaSeleccionada + "");
+
+            
         }
     }
 }

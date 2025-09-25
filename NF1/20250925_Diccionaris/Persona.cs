@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace _20250922_Classes
+namespace _20250925_Diccionaris
 {
     public class Persona
     {
