@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80672C28-CBD2-4140-B9E7-DD1067EE3A34}</ProjectGuid>
+    <ProjectGuid>{87F85517-7A83-4840-9FA2-80FE8958CAD7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>_20250925_Diccionaris</RootNamespace>
-    <AssemblyName>20250925_Diccionaris</AssemblyName>
+    <RootNamespace>_20251001_Controls_Senders</RootNamespace>
+    <AssemblyName>20251001_Controls_Senders</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -69,7 +69,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Persona.cs" />
+    <Compile Include="model\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,14 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Dracula.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="RomeoAndJuliet.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
