@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _20251001_Controls_Senders.model
 {
-    internal class Client
+    public class Client
     {
         private int id;
         private String CIF;
@@ -34,8 +34,14 @@ namespace _20251001_Controls_Senders.model
         public string RaoSocial { get => raoSocial; set => raoSocial = value; }
         public bool EsActiva { get => esActiva; set => esActiva = value; }
         public Dictionary<string, bool> Opcions { get => opcions; set => opcions = value; }
-        internal TipusEmpresa Tipus { get => tipus; set => tipus = value; }
-        internal Provincia Provincia { get => provincia; set => provincia = value; }
+        public TipusEmpresa Tipus { get => tipus; set => tipus = value; }
+        public Provincia Provincia { get => provincia; set => provincia = value; }
+
+
+        public String Foto
+        {
+            get => "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id+".png";
+        }
 
         #endregion
 

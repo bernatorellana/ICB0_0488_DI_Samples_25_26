@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:_20251001_Controls_Senders"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <Style x:Key="CellStyle" TargetType="Control">
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        <Style x:Key="HeaderCellStyle" TargetType="Control" BasedOn="{StaticResource ResourceKey=CellStyle}">
+            <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

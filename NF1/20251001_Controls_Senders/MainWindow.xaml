@@ -13,6 +13,80 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="dtgClients" Grid.Column="0"></DataGrid>
+        <!-- Graella de clients -->
+        <DataGrid x:Name="dtgClients" Grid.Column="0" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Raó Social" Binding="{Binding RaoSocial}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Provincia"  >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding Provincia.Id}"></Label>
+                                <Label  Content="{Binding Provincia.Nom}"></Label>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn Header="Foto"  >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!--Label Content="{Binding Foto}"></Label-->
+                            <Image  Source="{Binding Foto}"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
+       <!-- Formulari de client -->
+        <Grid Grid.Column="1">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+            <!-- Labels -->
+            <Label Style="{StaticResource HeaderCellStyle}" Grid.Column="0" Grid.Row="0">Id:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="1">Raó Social:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="2">CIF:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="3">Activa:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="4">Tipus:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="5">Província:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="6">Opcions:</Label>
+        
+            <!-- Controls del formulari -->
+            <TextBox  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="0" x:Name="txtId"></TextBox>
+            <TextBox  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="1" x:Name="txtCIF"></TextBox>
+            <TextBox  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="2" x:Name="txtRaoSocial"></TextBox>
+            <CheckBox  Style="{StaticResource CellStyle}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" x:Name="chkActiva">Empresa activa</CheckBox>
+            <StackPanel  Margin="10" Grid.Column="1" Grid.Row="4" Orientation="Vertical">
+                <RadioButton x:Name="rdoPrivada">PRIVADA</RadioButton>
+                <RadioButton x:Name="rdoPublica">PÚBLICA</RadioButton>
+                <RadioButton x:Name="rdoAutonom">AUTÒNOM</RadioButton>
+            </StackPanel>
+            <ComboBox  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="5" x:Name="cboProvincia"></ComboBox>
+
+            <Button VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="btnSave"  Grid.Column="1" Grid.Row="7">Save</Button> 
+            
+            
+            
+            
+            
+        
+        </Grid>
     </Grid>
 </Window>

@@ -3,7 +3,7 @@ using System.Windows.Documents;
 
 namespace _20251001_Controls_Senders.model
 {
-    internal class Provincia
+    public class Provincia
     {
         private int id;
         private string nom;
@@ -34,6 +34,10 @@ namespace _20251001_Controls_Senders.model
             }
             return _provincies;
         }
-    
+
+        public override string ToString()
+        {
+            return nom;
+        }
     }
 }
