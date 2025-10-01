@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _20251001_Controls_Senders.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace _20251001_Controls_Senders
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            dtgClients.ItemsSource = Client.GetClients();
         }
     }
 }

@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_20251001_Controls_Senders"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
     <Grid>
-        <StackPanel Orientation="Vertical">
-           
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="dtgClients" Grid.Column="0"></DataGrid>
     </Grid>
 </Window>
