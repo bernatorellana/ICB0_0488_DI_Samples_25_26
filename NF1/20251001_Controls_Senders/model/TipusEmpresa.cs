@@ -4,6 +4,7 @@
     {
         PRIVADA,
         PUBLICA,
-        AUTONOM
+        AUTONOM,
+        YONKI
     }
 }

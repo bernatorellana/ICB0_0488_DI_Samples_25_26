@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,6 +30,75 @@ namespace _20251001_Controls_Senders
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             dtgClients.ItemsSource = Client.GetClients();
+            // Carreguem la llista de províncies al ComboBox
+            cboProvincia.DisplayMemberPath = "Nom";
+            cboProvincia.ItemsSource = Provincia.GetProvincies();
+            /*
+            rdoAutonom.Tag = TipusEmpresa.AUTONOM;
+            rdoPublica.Tag = TipusEmpresa.PUBLICA;
+            rdoPrivada.Tag = TipusEmpresa.PRIVADA;
+            */
+            foreach( TipusEmpresa t in Enum.GetValues( typeof(TipusEmpresa))){
+                RadioButton rb = new RadioButton();
+                stpRadios.Children.Add(rb);
+                rb.Tag = t;
+                rb.Content = Enum.GetName(typeof(TipusEmpresa), t);
+            }
+        }
+
+
+        private Client c;
+
+
+        private void dtgClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            c = (Client)dtgClients.SelectedItem;
+
+            //     Omplim les dades del formulari
+            //----------------------------------------
+            //
+            txtCIF.Text = c.CIF1;
+            txtId.Text = c.Id+"";
+            txtRaoSocial.Text = c.RaoSocial;
+            // Seleccionar la província
+            cboProvincia.SelectedItem = c.Provincia;
+
+
+ 
+
+            foreach (RadioButton rb in stpRadios.Children)
+            {
+                rb.IsChecked = (c.Tipus == (TipusEmpresa)rb.Tag);
+            }
+
+            /*
+            rdoAutonom.IsChecked = (c.Tipus==TipusEmpresa.AUTONOM); 
+            rdoPublica.IsChecked = (c.Tipus==TipusEmpresa.PUBLICA); 
+            rdoPrivada.IsChecked = (c.Tipus==TipusEmpresa.PRIVADA); 
+            */
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+            c.Id = Int32.Parse( txtId.Text );
+
+            c.RaoSocial = txtRaoSocial.Text;
+            c.CIF1 = txtCIF.Text;
+
+            c.Provincia = (Provincia)cboProvincia.SelectedItem;
+
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
