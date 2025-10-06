@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
@@ -39,7 +40,20 @@ namespace _20251001_Controls_Senders.model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Foto"));
             }
         }
-        public string CIF1 { get => CIF; set => CIF = value; }
+        public string CIF1 { get => CIF;
+            set
+            {
+                string error = "";
+                if (ValidaCIF(value, out error))
+                {
+                    CIF = value;
+                } 
+                else
+                {
+                    throw new Exception(error);
+                }
+            }
+        }
         public string RaoSocial { 
             get => raoSocial;
             set
@@ -78,12 +92,12 @@ namespace _20251001_Controls_Senders.model
             if( _clients == null)
             {
                 _clients = new OC<Client>();
-                Client pep = new Client(12, "J7677666T", "Camping S.A.", false, 
+                Client pep = new Client(12, "J01234567", "Camping S.A.", false, 
                                             TipusEmpresa.PRIVADA, Provincia.GetProvincies()[0]);
 
                 _clients.Add(pep);
 
-                Client maria = new Client(34, "1111111H", "Enginyeria AKT", true, TipusEmpresa.AUTONOM,
+                Client maria = new Client(34, "A01234567", "Enginyeria AKT", true, TipusEmpresa.AUTONOM,
                                            Provincia.GetProvincies().Where( p => p.Id==2 ).First());
                 _clients.Add(maria);
             }
@@ -95,7 +109,19 @@ namespace _20251001_Controls_Senders.model
 
         #endregion
 
+        #region validacions
 
+
+        public static bool ValidaCIF(String CIF, out String error)
+        {
+            Regex re = new Regex("[A-Z][0-9]{8}");
+            bool isOk = re.IsMatch(CIF);
+            error = isOk?"": "CIF erroni";            
+            return isOk;
+        }
+
+
+        #endregion
 
 
     }

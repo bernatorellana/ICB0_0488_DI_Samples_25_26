@@ -46,6 +46,7 @@
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -60,17 +61,18 @@
             </Grid.RowDefinitions>
         
             <!-- Labels -->
-            <Label Style="{StaticResource HeaderCellStyle}" Grid.Column="0" Grid.Row="0">Id:</Label>
-            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="1">CIF:</Label>
-            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="2">Raó Social:</Label>
-            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="3">Activa:</Label>
-            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="4">Tipus:</Label>
-            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="5">Província:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}" Grid.Column="0" Grid.Row="0">
+                * Id:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="1">* CIF:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="2">* Raó Social:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="3">* Activa:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="4">* Tipus:</Label>
+            <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="5">* Província:</Label>
             <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="6">Opcions:</Label>
         
             <!-- Controls del formulari -->
             <TextBox IsEnabled="true" Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="0" x:Name="txtId"></TextBox>
-            <TextBox  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="1" x:Name="txtCIF"></TextBox>
+            <TextBox LostFocus="txtCIF_LostFocus" Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="1" x:Name="txtCIF"></TextBox>
             <TextBox  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="2" x:Name="txtRaoSocial"></TextBox>
             <CheckBox  Style="{StaticResource CellStyle}" VerticalAlignment="Center" Grid.Column="1"
                        Grid.Row="3" x:Name="chkActiva">Empresa activa</CheckBox>
@@ -87,9 +89,13 @@
             <Button x:Name="btnSave" Click="btnSave_Click" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center"   Grid.Column="1" Grid.Row="7">Save</Button> 
             
             
-            
-            
-            
+            <!-- Missatges d'error -->
+            <Label x:Name="lblErrorCIF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
+            <Label x:Name="lblErrorRao" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
+            <Label x:Name="lblErrorActiva" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
+            <Label x:Name="lblErrorTipus" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
+            <Label x:Name="lblErrorProvincia" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
+           
         
         </Grid>
     </Grid>

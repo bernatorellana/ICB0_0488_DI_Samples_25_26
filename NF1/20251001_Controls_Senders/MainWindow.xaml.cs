@@ -63,9 +63,6 @@ namespace _20251001_Controls_Senders
             // Seleccionar la província
             cboProvincia.SelectedItem = c.Provincia;
 
-
- 
-
             foreach (RadioButton rb in stpRadios.Children)
             {
                 rb.IsChecked = (c.Tipus == (TipusEmpresa)rb.Tag);
@@ -76,6 +73,9 @@ namespace _20251001_Controls_Senders
             rdoPublica.IsChecked = (c.Tipus==TipusEmpresa.PUBLICA); 
             rdoPrivada.IsChecked = (c.Tipus==TipusEmpresa.PRIVADA); 
             */
+
+            chkActiva.IsChecked = c.EsActiva;
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -88,6 +88,46 @@ namespace _20251001_Controls_Senders
 
             c.Provincia = (Provincia)cboProvincia.SelectedItem;
 
+
+
+            TipusEmpresa te = TipusEmpresa.YONKI;
+            //int i = 0;
+            foreach (RadioButton rb in stpRadios.Children)
+            {
+                if(rb.IsChecked.Value)
+                {
+                    te = (TipusEmpresa)rb.Tag;                    
+                    //te = (TipusEmpresa) Enum.GetValues(typeof(TipusEmpresa)).GetValue(i);
+                    break;
+                }
+                //i++;
+            }
+            c.Tipus = te;
+
+            c.EsActiva = chkActiva.IsChecked.Value;
+
+
+        }
+
+        private void txtCIF_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string error;
+            bool campCIFValid = Client.ValidaCIF(txtCIF.Text,out error);
+
+            mostraError(txtCIF, lblErrorCIF, campCIFValid, error);
+        }
+
+        private void mostraError(Control txt, Label lblError, bool campValid, string error)
+        {
+            if(campValid)
+            {
+                txt.Background = new SolidColorBrush(Colors.Transparent);
+                lblError.Content = "";
+            } else
+            {
+                txt.Background = new SolidColorBrush(Colors.Red);
+                lblError.Content = error;
+            }
         }
     }
 }
