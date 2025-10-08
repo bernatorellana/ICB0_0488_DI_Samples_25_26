@@ -23,6 +23,8 @@ namespace _20251001_Controls_Senders
     public partial class MainWindow : Window
     {
 
+        private Client clientActual;
+
         public enum TipusMode
         {
             EDICIO,
@@ -122,25 +124,25 @@ namespace _20251001_Controls_Senders
         }
 
 
-        private Client c;
+
 
 
         private void dtgClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            c = (Client)dtgClients.SelectedItem;
+            clientActual = (Client)dtgClients.SelectedItem;
 
             //     Omplim les dades del formulari
             //----------------------------------------
             //
-            txtCIF.Text = c.CIF1;
-            txtId.Text = c.Id+"";
-            txtRaoSocial.Text = c.RaoSocial;
+            txtCIF.Text = clientActual.CIF1;
+            txtId.Text = clientActual.Id+"";
+            txtRaoSocial.Text = clientActual.RaoSocial;
             // Seleccionar la província
-            cboProvincia.SelectedItem = c.Provincia;
+            cboProvincia.SelectedItem = clientActual.Provincia;
 
             foreach (RadioButton rb in stpRadios.Children)
             {
-                rb.IsChecked = (c.Tipus == (TipusEmpresa)rb.Tag);
+                rb.IsChecked = (clientActual.Tipus == (TipusEmpresa)rb.Tag);
             }
 
             /*
@@ -149,7 +151,7 @@ namespace _20251001_Controls_Senders
             rdoPrivada.IsChecked = (c.Tipus==TipusEmpresa.PRIVADA); 
             */
 
-            chkActiva.IsChecked = c.EsActiva;
+            chkActiva.IsChecked = clientActual.EsActiva;
 
             Mode = TipusMode.EDICIO;
         }
@@ -158,11 +160,11 @@ namespace _20251001_Controls_Senders
         {
             if (validaForm())
             {
-                c.Id = Int32.Parse(txtId.Text);
-                c.RaoSocial = txtRaoSocial.Text;
-                c.CIF1 = txtCIF.Text;
-                c.Provincia = (Provincia)cboProvincia.SelectedItem;
 
+                //int id = Int32.Parse(txtId.Text);
+                string rs = txtRaoSocial.Text;
+                string cif = txtCIF.Text;
+                Provincia p = (Provincia)cboProvincia.SelectedItem;
                 TipusEmpresa te = TipusEmpresa.YONKI;
                 //int i = 0;
                 foreach (RadioButton rb in stpRadios.Children)
@@ -174,10 +176,27 @@ namespace _20251001_Controls_Senders
                         break;
                     }
                     //i++;
-                }
-                c.Tipus = te;
+                }                
+                bool esActiva = chkActiva.IsChecked.Value;
 
-                c.EsActiva = chkActiva.IsChecked.Value;
+                if (Mode == TipusMode.NOU)
+                {
+                    int max = Client.GetClients().Max(x => x.Id) + 1;
+                    clientActual = new Client(max,cif,rs,esActiva,te,p);
+                    Client.GetClients().Add(clientActual);
+                    Mode = TipusMode.EN_ESPERA;
+                } else
+                {
+                    //clientActual.Id = id;
+                    clientActual.CIF1 = cif;
+                    clientActual.RaoSocial = rs;
+                    clientActual.Provincia = p;
+                    clientActual.EsActiva = esActiva;
+                    clientActual.Tipus = te; 
+                }
+
+
+
             }
 
         }
