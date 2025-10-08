@@ -60,7 +60,14 @@ namespace _20251001_Controls_Senders.model
             {
                 if (value != raoSocial)
                 {
-                    raoSocial = value;
+                    String error;
+                    if (ValidaRaoSocial(value, out error))
+                    {
+                        raoSocial = value;
+                    } else
+                    {
+                        throw new Exception(error);
+                    }
                     //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RaoSocial)));
                 }
             }
@@ -120,6 +127,15 @@ namespace _20251001_Controls_Senders.model
             return isOk;
         }
 
+        public static bool ValidaRaoSocial(String raoSocial, out String error)
+        {
+            if(raoSocial.Trim().Length < 3) { 
+                error = "Mínim 3 caràcters"; 
+                return false; }
+
+            error = "";
+            return true;
+        }
 
         #endregion
 

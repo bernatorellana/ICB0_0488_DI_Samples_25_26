@@ -71,9 +71,9 @@
             <Label Style="{StaticResource HeaderCellStyle}"  Grid.Column="0" Grid.Row="6">Opcions:</Label>
         
             <!-- Controls del formulari -->
-            <TextBox IsEnabled="true" Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="0" x:Name="txtId"></TextBox>
-            <TextBox LostFocus="txtCIF_LostFocus" Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="1" x:Name="txtCIF"></TextBox>
-            <TextBox  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="2" x:Name="txtRaoSocial"></TextBox>
+            <TextBox IsEnabled="false" Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="0" x:Name="txtId"></TextBox>
+            <TextBox  LostFocus="txtCIF_LostFocus" Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="1" x:Name="txtCIF"></TextBox>
+            <TextBox LostFocus="txtRaoSocial_LostFocus" Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="2" x:Name="txtRaoSocial"></TextBox>
             <CheckBox  Style="{StaticResource CellStyle}" VerticalAlignment="Center" Grid.Column="1"
                        Grid.Row="3" x:Name="chkActiva">Empresa activa</CheckBox>
             <StackPanel  x:Name="stpRadios" Margin="10" Grid.Column="1" Grid.Row="4" Orientation="Vertical">
@@ -86,15 +86,22 @@
                 
             </ComboBox>
 
-            <Button x:Name="btnSave" Click="btnSave_Click" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center"   Grid.Column="1" Grid.Row="7">Save</Button> 
-            
-            
+            <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"  x:Name="btnNew" Click="btnNew_Click" Padding="30,10,30,10" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="20" >&#xECC8;</Button>
+                <Button Grid.Column="2"  x:Name="btnSave" Click="btnSave_Click" Padding="30,10,30,10" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets"  FontSize="20">&#xE74E;</Button>
+            </Grid>
+
             <!-- Missatges d'error -->
-            <Label x:Name="lblErrorCIF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
-            <Label x:Name="lblErrorRao" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
-            <Label x:Name="lblErrorActiva" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
-            <Label x:Name="lblErrorTipus" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
-            <Label x:Name="lblErrorProvincia" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></Label>
+            <TextBlock x:Name="lblErrorCIF"        TextWrapping="Wrap"  Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></TextBlock>
+            <TextBlock x:Name="lblErrorRao"        TextWrapping="Wrap" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></TextBlock>
+            <TextBlock x:Name="lblErrorActiva"     TextWrapping="Wrap" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></TextBlock>
+            <TextBlock x:Name="lblErrorTipus"      TextWrapping="Wrap" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></TextBlock>
+            <TextBlock x:Name="lblErrorProvincia"  TextWrapping="Wrap" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="red"></TextBlock>
            
         
         </Grid>
