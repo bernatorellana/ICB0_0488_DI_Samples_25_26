@@ -23,8 +23,19 @@ namespace _20251001_Controls_Senders
     public partial class MainWindow : Window
     {
 
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// El client seleccionat actualment
+        /// </summary>
         private Client clientActual;
 
+        /// <summary>
+        /// Modes que té la pantalla d'edició de clients
+        /// </summary>
         public enum TipusMode
         {
             EDICIO,
@@ -35,6 +46,12 @@ namespace _20251001_Controls_Senders
 
         private TipusMode _mode;
 
+
+        /// <summary>
+        /// La propietat Mode controla el mode del formulari, i manté la coherència
+        /// de l'estat dels botons, i realitza les accions necessàries per canviar
+        /// de mode (netejar camps, validar forms, etc. ) 
+        /// </summary>
         public TipusMode Mode
         {
             get { return _mode; }
@@ -45,7 +62,7 @@ namespace _20251001_Controls_Senders
                 {
                     _mode = value;
 
-
+                    /// Actualitza l'estat dels botons
                     btnNew.IsEnabled = (Mode != TipusMode.NOU);
                     btnSave.IsEnabled = (Mode != TipusMode.EN_ESPERA);
 
@@ -68,6 +85,10 @@ namespace _20251001_Controls_Senders
             }
         }
 
+        /// <summary>
+        /// Bloqueja/desbloqueja tots els controls del formulari
+        /// </summary>
+        /// <param name="v">True per bloquejar el form</param>
         private void bloquejarForm(bool v)
         {
             txtCIF.IsEnabled = !v;
@@ -98,10 +119,7 @@ namespace _20251001_Controls_Senders
             chkActiva.IsChecked = false;
         }
 
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -126,7 +144,11 @@ namespace _20251001_Controls_Senders
 
 
 
-
+        /// <summary>
+        /// L'Event salta quan seleccionem un client al DataGrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtgClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             clientActual = (Client)dtgClients.SelectedItem;
@@ -195,8 +217,6 @@ namespace _20251001_Controls_Senders
                     clientActual.Tipus = te; 
                 }
 
-
-
             }
 
         }
@@ -219,6 +239,13 @@ namespace _20251001_Controls_Senders
             }
         }
 
+        /// <summary>
+        /// Funció genèrica per mostrar errors al formulari
+        /// </summary>
+        /// <param name="txt">El textbox que conté el valor erroni.</param>
+        /// <param name="lblError">El label on cal mostra l'error.</param>
+        /// <param name="campValid">Inidica si el valor és correcte.</param>
+        /// <param name="error">Text d'error.</param>
         private void mostraError(Control txt, TextBlock lblError, bool campValid, string error)
         {
             if (campValid)
@@ -238,7 +265,10 @@ namespace _20251001_Controls_Senders
             validaForm();
         }
 
-
+        /// <summary>
+        /// Valida el form, mostrant missatges en els camps que contenen valors erronis
+        /// </summary>
+        /// <returns></returns>
         private bool validaForm()
         {
 
@@ -261,6 +291,11 @@ namespace _20251001_Controls_Senders
         }
         Thickness original ;
 
+        /// <summary>
+        /// Nou client
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
             Mode = TipusMode.NOU;
