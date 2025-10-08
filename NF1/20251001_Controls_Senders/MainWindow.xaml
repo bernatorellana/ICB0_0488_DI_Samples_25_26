@@ -89,10 +89,11 @@
             <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"  x:Name="btnNew" Click="btnNew_Click" Padding="30,10,30,10" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="20" >&#xECC8;</Button>
+                <Button Grid.Column="1"  x:Name="btnDelete" Click="btnDelete_Click" Padding="30,10,30,10" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets"  FontSize="20">&#xECC9;</Button>
                 <Button Grid.Column="2"  x:Name="btnSave" Click="btnSave_Click" Padding="30,10,30,10" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets"  FontSize="20">&#xE74E;</Button>
             </Grid>
 

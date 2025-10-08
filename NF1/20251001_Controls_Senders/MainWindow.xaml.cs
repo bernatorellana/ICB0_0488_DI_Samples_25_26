@@ -65,6 +65,7 @@ namespace _20251001_Controls_Senders
                     /// Actualitza l'estat dels botons
                     btnNew.IsEnabled = (Mode != TipusMode.NOU);
                     btnSave.IsEnabled = (Mode != TipusMode.EN_ESPERA);
+                    btnDelete.IsEnabled = (Mode==TipusMode.EDICIO);
 
                     switch (Mode)
                     {
@@ -79,7 +80,9 @@ namespace _20251001_Controls_Senders
                         case TipusMode.EN_ESPERA:
                         {
                             bloquejarForm(true);
-                        }break;
+                                buidarFormulari();
+                        }
+                        break;
                     }
                 }
             }
@@ -152,6 +155,12 @@ namespace _20251001_Controls_Senders
         private void dtgClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             clientActual = (Client)dtgClients.SelectedItem;
+
+            if(clientActual==null)
+            {
+                Mode = TipusMode.EN_ESPERA;
+                return;
+            }
 
             //     Omplim les dades del formulari
             //----------------------------------------
@@ -299,6 +308,12 @@ namespace _20251001_Controls_Senders
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
             Mode = TipusMode.NOU;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Client.GetClients().Remove(clientActual);
+            Mode = TipusMode.EN_ESPERA;
         }
     }
 }
