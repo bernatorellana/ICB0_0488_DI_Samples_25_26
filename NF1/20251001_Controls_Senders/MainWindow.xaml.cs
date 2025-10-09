@@ -315,6 +315,11 @@ namespace _20251001_Controls_Senders
             Client.GetClients().Remove(clientActual);
             Mode = TipusMode.EN_ESPERA;
         }
+
+        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

@@ -5,16 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_20251001_Controls_Senders"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" MinHeight="650" MinWidth="700"
         Loaded="Window_Loaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+        
+        <!-- Àrea de filtres -->
 
+        <GroupBox
+            Background="#f0f0f0"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="FILTRE" Margin="5" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <TextBlock VerticalAlignment="Center" Text="Busca per Id:" Grid.Column="0" Grid.Row="0"></TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="Busca per Raó social:" Grid.Column="0" Grid.Row="1"></TextBlock>
+
+                <TextBox x:Name="txtCercaId"  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="0"></TextBox>
+                <TextBox x:Name="txtCercaRaoSocial"  Style="{StaticResource CellStyle}"  Grid.Column="1" Grid.Row="1"></TextBox>
+
+                <Button Grid.Column="2" x:Name="btnFilter" Click="btnFilter_Click" Style="{StaticResource CellStyle}"  Grid.Row="0" FontFamily="Segoe MDL2 Assets" >&#xE71C;</Button>
+                <Button Grid.Column="2" x:Name="btnClearFilter"  Style="{StaticResource CellStyle}"  Grid.Row="1"  FontFamily="Segoe MDL2 Assets" >&#xE711;</Button>
+                
+            </Grid>
+            
+            
+            
+        </GroupBox>
         <!-- Graella de clients -->
-        <DataGrid x:Name="dtgClients" Grid.Column="0" AutoGenerateColumns="False" SelectionChanged="dtgClients_SelectionChanged">
+        <DataGrid x:Name="dtgClients" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False" SelectionChanged="dtgClients_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Raó Social" Binding="{Binding RaoSocial}"></DataGridTextColumn>
@@ -42,7 +77,7 @@
         </DataGrid>
         
        <!-- Formulari de client -->
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1"  Grid.Row="1" >
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -106,5 +141,6 @@
            
         
         </Grid>
+  
     </Grid>
 </Window>
