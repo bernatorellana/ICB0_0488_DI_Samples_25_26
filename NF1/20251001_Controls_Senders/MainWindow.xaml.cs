@@ -1,5 +1,8 @@
 ﻿using _20251001_Controls_Senders.model;
+using DatabaseManager;
+using DBMan;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
@@ -126,6 +129,12 @@ namespace _20251001_Controls_Senders
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+      
+            String depts = DAODept.GetDepts();
+
+
+
+
             dtgClients.ItemsSource = Client.GetClients();
             // Carreguem la llista de províncies al ComboBox
             cboProvincia.DisplayMemberPath = "Nom";
@@ -319,6 +328,37 @@ namespace _20251001_Controls_Senders
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
 
+            filtrar();
+        }
+
+        private void filtrar()
+        {
+            dtgClients.ItemsSource = filtraClients( txtCercaId.Text, txtCercaRaoSocial.Text);
+        }
+
+        private OC<Client> clientsFiltrats;
+
+        private OC<Client> filtraClients(string id, string rs)
+        {
+            clientsFiltrats = new OC<Client>();
+
+            Client.GetClients().Where(c =>
+                            (id=="" || c.Id + "" == id )
+                            && 
+                            (rs=="" || c.RaoSocial.ToLower().Contains(rs.ToLower()))).ToList().ForEach(clientsFiltrats.Add);
+
+
+            /*foreach (Client c in Client.GetClients())
+            {
+                if(id.Length==0 || id == c.Id.ToString())
+                {
+                    if (rs.Length == 0 || rs == c.RaoSocial.ToString())
+                    {
+                        clientsFiltrats.Add(c);
+                    }
+                }                
+            }*/
+            return clientsFiltrats;
         }
     }
 }
