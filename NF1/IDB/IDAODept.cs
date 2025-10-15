@@ -6,6 +6,5 @@ namespace IDB
     {
         public List<Dept> GetDepts();
 
-        //public List<Dept> GetDepts(string nom);
     }
 }

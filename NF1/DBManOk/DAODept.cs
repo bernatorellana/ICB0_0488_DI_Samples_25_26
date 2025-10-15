@@ -26,6 +26,7 @@ namespace DBManOk
                     using (var consulta = connexio.CreateCommand())
                     {
 
+
                         // query SQL
                         consulta.CommandText = @"select *  
                                                 from dept ";
@@ -40,6 +41,13 @@ namespace DBManOk
 
                             resultat.Add(d);
                         }
+
+                        //consulta.CommandText = @"select count(1) from dept";
+                        //int? comptatge = (int?)consulta.ExecuteScalar();
+
+
+
+
                     }
 
                 }
