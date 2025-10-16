@@ -1,12 +1,5 @@
 ﻿using _20251001_Controls_Senders.model;
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,7 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _20251001_Controls_Senders
+namespace Aplicacio
 {
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
@@ -67,24 +60,28 @@ namespace _20251001_Controls_Senders
                     /// Actualitza l'estat dels botons
                     btnNew.IsEnabled = (Mode != TipusMode.NOU);
                     btnSave.IsEnabled = (Mode != TipusMode.EN_ESPERA);
-                    btnDelete.IsEnabled = (Mode==TipusMode.EDICIO);
+                    btnDelete.IsEnabled = (Mode == TipusMode.EDICIO);
 
                     switch (Mode)
                     {
-                        case TipusMode.EDICIO: {
+                        case TipusMode.EDICIO:
+                            {
                                 bloquejarForm(false);
                                 validaForm();
-                        } break;
-                        case TipusMode.NOU: {
+                            }
+                            break;
+                        case TipusMode.NOU:
+                            {
                                 bloquejarForm(false);
-                                buidarFormulari();    
-                        } break;
-                        case TipusMode.EN_ESPERA:
-                        {
-                            bloquejarForm(true);
                                 buidarFormulari();
-                        }
-                        break;
+                            }
+                            break;
+                        case TipusMode.EN_ESPERA:
+                            {
+                                bloquejarForm(true);
+                                buidarFormulari();
+                            }
+                            break;
                     }
                 }
             }
@@ -128,7 +125,7 @@ namespace _20251001_Controls_Senders
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-      
+
 
             dtgClients.ItemsSource = Client.GetClients();
             // Carreguem la llista de províncies al ComboBox
@@ -139,7 +136,8 @@ namespace _20251001_Controls_Senders
             rdoPublica.Tag = TipusEmpresa.PUBLICA;
             rdoPrivada.Tag = TipusEmpresa.PRIVADA;
             */
-            foreach( TipusEmpresa t in Enum.GetValues( typeof(TipusEmpresa))){
+            foreach (TipusEmpresa t in Enum.GetValues(typeof(TipusEmpresa)))
+            {
                 RadioButton rb = new RadioButton();
                 stpRadios.Children.Add(rb);
                 rb.Tag = t;
@@ -160,7 +158,7 @@ namespace _20251001_Controls_Senders
         {
             clientActual = (Client)dtgClients.SelectedItem;
 
-            if(clientActual==null)
+            if (clientActual == null)
             {
                 Mode = TipusMode.EN_ESPERA;
                 return;
@@ -170,7 +168,7 @@ namespace _20251001_Controls_Senders
             //----------------------------------------
             //
             txtCIF.Text = clientActual.CIF1;
-            txtId.Text = clientActual.Id+"";
+            txtId.Text = clientActual.Id + "";
             txtRaoSocial.Text = clientActual.RaoSocial;
             // Seleccionar la província
             cboProvincia.SelectedItem = clientActual.Provincia;
@@ -211,23 +209,24 @@ namespace _20251001_Controls_Senders
                         break;
                     }
                     //i++;
-                }                
+                }
                 bool esActiva = chkActiva.IsChecked.Value;
 
                 if (Mode == TipusMode.NOU)
                 {
                     int max = Client.GetClients().Max(x => x.Id) + 1;
-                    clientActual = new Client(max,cif,rs,esActiva,te,p);
+                    clientActual = new Client(max, cif, rs, esActiva, te, p);
                     Client.GetClients().Add(clientActual);
                     Mode = TipusMode.EN_ESPERA;
-                } else
+                }
+                else
                 {
                     //clientActual.Id = id;
                     clientActual.CIF1 = cif;
                     clientActual.RaoSocial = rs;
                     clientActual.Provincia = p;
                     clientActual.EsActiva = esActiva;
-                    clientActual.Tipus = te; 
+                    clientActual.Tipus = te;
                 }
 
             }
@@ -241,11 +240,12 @@ namespace _20251001_Controls_Senders
 
         private void mostraError(Control txt, Label lblError, bool campValid, string error)
         {
-            if(campValid)
+            if (campValid)
             {
                 txt.Background = new SolidColorBrush(Colors.Transparent);
                 lblError.Content = "";
-            } else
+            }
+            else
             {
                 txt.Background = new SolidColorBrush(Colors.Red);
                 lblError.Content = error;
@@ -302,7 +302,7 @@ namespace _20251001_Controls_Senders
 
             return isFormOk;
         }
-        Thickness original ;
+        Thickness original;
 
         /// <summary>
         /// Nou client
@@ -328,7 +328,7 @@ namespace _20251001_Controls_Senders
 
         private void filtrar()
         {
-            dtgClients.ItemsSource = filtraClients( txtCercaId.Text, txtCercaRaoSocial.Text);
+            dtgClients.ItemsSource = filtraClients(txtCercaId.Text, txtCercaRaoSocial.Text);
         }
 
         private OC<Client> clientsFiltrats;
@@ -338,9 +338,9 @@ namespace _20251001_Controls_Senders
             clientsFiltrats = new OC<Client>();
 
             Client.GetClients().Where(c =>
-                            (id=="" || c.Id + "" == id )
-                            && 
-                            (rs=="" || c.RaoSocial.ToLower().Contains(rs.ToLower()))).ToList().ForEach(clientsFiltrats.Add);
+                            (id == "" || c.Id + "" == id)
+                            &&
+                            (rs == "" || c.RaoSocial.ToLower().Contains(rs.ToLower()))).ToList().ForEach(clientsFiltrats.Add);
 
 
             /*foreach (Client c in Client.GetClients())
@@ -357,14 +357,3 @@ namespace _20251001_Controls_Senders
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
