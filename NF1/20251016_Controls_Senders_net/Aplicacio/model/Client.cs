@@ -19,6 +19,8 @@ namespace _20251001_Controls_Senders.model
         private Boolean esActiva;
         private TipusEmpresa tipus;
         private Provincia provincia;
+        private String imatgeUrl;
+
         private Dictionary<String, bool> opcions = 
             new Dictionary<String, bool>();
 
@@ -77,13 +79,7 @@ namespace _20251001_Controls_Senders.model
         public TipusEmpresa Tipus { get => tipus; set => tipus = value; }
         public Provincia Provincia { get => provincia; set => provincia = value; }
 
-    
-        [DependsOn("Id")]
-        public String Foto
-        {
-            get => "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id+".png";
-     
-        }
+        public String Foto { get => imatgeUrl; set => imatgeUrl = value; }
 
         #endregion
 
