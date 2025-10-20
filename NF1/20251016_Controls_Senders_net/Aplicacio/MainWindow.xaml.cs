@@ -128,9 +128,8 @@ namespace Aplicacio
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            IDAOClient dao = MySQLFactory.getDAOClient();
-
-            dtgClients.ItemsSource = Client.GetClients();
+            filtrar();
+            
             // Carreguem la llista de províncies al ComboBox
             cboProvincia.DisplayMemberPath = "Nom";
             cboProvincia.ItemsSource = Provincia.GetProvincies();
@@ -331,7 +330,12 @@ namespace Aplicacio
 
         private void filtrar()
         {
-            dtgClients.ItemsSource = filtraClients(txtCercaId.Text, txtCercaRaoSocial.Text);
+            IDAOClient dao = MySQLFactory.getDAOClient();
+
+            dtgClients.ItemsSource = dao.GetClients
+                (txtCercaId.Text, txtCercaRaoSocial.Text); //Client.GetClients();
+
+            //dtgClients.ItemsSource = filtraClients(txtCercaId.Text, txtCercaRaoSocial.Text);
         }
 
         private OC<Client> clientsFiltrats;

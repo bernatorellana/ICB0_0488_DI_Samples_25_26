@@ -11,7 +11,7 @@ namespace DAO
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            String connectionString = "Server=localhost;Database=empresa;UID=root;Password=";
+            String connectionString = "Server=localhost;Database=clients;UID=root;Password=";
 
             optionBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
