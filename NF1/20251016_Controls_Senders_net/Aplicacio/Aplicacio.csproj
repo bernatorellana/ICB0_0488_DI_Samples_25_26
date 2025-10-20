@@ -12,4 +12,10 @@
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\IDB\IDAO.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
 </Project>

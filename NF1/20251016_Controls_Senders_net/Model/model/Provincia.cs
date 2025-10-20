@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Windows.Documents;
+
 
 namespace _20251001_Controls_Senders.model
 {

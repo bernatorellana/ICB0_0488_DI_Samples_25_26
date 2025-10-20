@@ -1,4 +1,6 @@
 ﻿using _20251001_Controls_Senders.model;
+using DAO;
+using IDAO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -126,6 +128,7 @@ namespace Aplicacio
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+            IDAOClient dao = MySQLFactory.getDAOClient();
 
             dtgClients.ItemsSource = Client.GetClients();
             // Carreguem la llista de províncies al ComboBox

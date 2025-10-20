@@ -9,6 +9,11 @@ namespace DAO
 {
     public class MySQLFactory
     {
+        public static IDAOClient getDAOClient()
+        {
+            return new DAOClient();
+        }
+
         public static IDAODept getDAODept()
         {
             return new DAODept();
