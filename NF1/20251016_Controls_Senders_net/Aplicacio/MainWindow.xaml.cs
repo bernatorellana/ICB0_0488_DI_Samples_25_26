@@ -330,7 +330,8 @@ namespace Aplicacio
 
         private void filtrar()
         {
-            IDAOClient dao = MySQLFactory.getDAOClient();
+            UnitOfWork uow = MySQLFactory.getUOW();
+            IDAOClient dao = uow.Clients;
 
             dtgClients.ItemsSource = dao.GetClients
                 (txtCercaId.Text, txtCercaRaoSocial.Text); //Client.GetClients();

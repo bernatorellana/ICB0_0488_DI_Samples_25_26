@@ -14,17 +14,29 @@ namespace DAO
 {
     public class DAOClient : IDAOClient
     {
+
+        private readonly MyDBContext _context;
+
+
+        public DAOClient(MyDBContext c) {
+            _context = c;
+        }
+
+        
+
         public Client GetClient(int id)
         {
             throw new NotImplementedException();
         }
 
+
+
         public List<Client> GetClients(string id_filtre, string rao_social_filtre)
         {
             List<Client> resultat = new List<Client>();
-            using (MyDBContext context = new MyDBContext())
+            using (_context)
             {
-                using (var connexio = context.Database.GetDbConnection()) // <== NOTA IMPORTANT: requereix ==>using Microsoft.EntityFrameworkCore;
+                using (var connexio = _context.Database.GetDbConnection()) // <== NOTA IMPORTANT: requereix ==>using Microsoft.EntityFrameworkCore;
                 {
                     // Obrir la connexió a la BD
                     connexio.Open();

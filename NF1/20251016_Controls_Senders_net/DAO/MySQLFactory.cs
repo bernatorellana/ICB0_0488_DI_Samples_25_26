@@ -9,14 +9,9 @@ namespace DAO
 {
     public class MySQLFactory
     {
-        public static IDAOClient getDAOClient()
+        public static UnitOfWork getUOW()
         {
-            return new DAOClient();
-        }
-
-        public static IDAODept getDAODept()
-        {
-            return new DAODept();
+            return new UnitOfWork(new MyDBContext());
         }
     }
 }
