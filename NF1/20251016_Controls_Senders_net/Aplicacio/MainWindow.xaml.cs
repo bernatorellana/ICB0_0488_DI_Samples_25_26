@@ -1,6 +1,7 @@
 ﻿using _20251001_Controls_Senders.model;
 using DAO;
 using IDAO;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -216,10 +217,14 @@ namespace Aplicacio
 
                 if (Mode == TipusMode.NOU)
                 {
-                    int max = Client.GetClients().Max(x => x.Id) + 1;
-                    clientActual = new Client(max, cif, rs, esActiva, te, p);
-                    Client.GetClients().Add(clientActual);
+                    //int max = Client.GetClients().Max(x => x.Id) + 1;
+                    clientActual = new Client(-1, cif, rs, esActiva, te, p);
+                    //Client.GetClients().Add(clientActual);
+                    clientsActuals.Add(clientActual);
                     Mode = TipusMode.EN_ESPERA;
+
+                    UnitOfWork uow = MySQLFactory.getUOW();
+                    uow.DAOClients.InsertClient(clientActual);
                 }
                 else // actualitzant el cient
                 {
@@ -333,13 +338,18 @@ namespace Aplicacio
             filtrar();
         }
 
+
+        private ObservableCollection<Client> clientsActuals;
+
         private void filtrar()
         {
             UnitOfWork uow = MySQLFactory.getUOW();
             IDAOClient dao = uow.DAOClients;
 
-            dtgClients.ItemsSource = dao.GetClients
-                (txtCercaId.Text, txtCercaRaoSocial.Text); //Client.GetClients();
+            clientsActuals = dao.GetClients(txtCercaId.Text, txtCercaRaoSocial.Text); //Client.GetClients();
+
+            dtgClients.ItemsSource = clientsActuals;
+
 
             //dtgClients.ItemsSource = filtraClients(txtCercaId.Text, txtCercaRaoSocial.Text);
         }

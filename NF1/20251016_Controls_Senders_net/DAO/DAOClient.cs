@@ -95,7 +95,51 @@ namespace DAO
 
         public bool InsertClient(Client c)
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                using (var connexio = _context.Database.GetDbConnection()) // <== NOTA IMPORTANT: requereix ==>using Microsoft.EntityFrameworkCore;
+                {
+                    // Obrir la connexió a la BD
+                    connexio.Open();
+
+                    var transaccio = connexio.BeginTransaction(); // inicia una transacció
+
+                    // Crear una consulta SQL
+                    using (var consulta = connexio.CreateCommand())
+                    {
+
+                        // query SQL
+                        consulta.CommandText =
+                            @"insert into client (CIF, raoSocial, esActiva,tipus, provincia_id, imatge_url )
+                                        values(  @CIF,  @raoSocial,@esActiva ,@tipus ,@provincia_id,@imatge_url)
+                              ";
+
+                        consulta.Transaction = transaccio; // IMPORTANT !!! NO us ho deixeu <--------------------!!!!!!!
+
+                        Utils.CrearParametre(consulta, c.CIF1, "CIF", System.Data.DbType.String);
+                        Utils.CrearParametre(consulta, c.RaoSocial, "raoSocial", System.Data.DbType.String);
+                        Utils.CrearParametre(consulta, c.EsActiva, "esActiva", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, c.Tipus, "tipus", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, c.Provincia.Id, "provincia_id", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, "", "imatge_url", System.Data.DbType.String);
+
+                        int numeroFilesAfectades = consulta.ExecuteNonQuery(); // UPDATE; DELETE; INSERT
+
+
+                        if (numeroFilesAfectades != 1)
+                        {
+                            transaccio.Rollback(); // Torna enrera !!!
+                            return false;
+                        }
+                        else
+                        {
+                            transaccio.Commit();
+                            return true;
+                        }
+
+                    }
+                }
+            }
         }
 
         public bool UpdateClient(Client c)
