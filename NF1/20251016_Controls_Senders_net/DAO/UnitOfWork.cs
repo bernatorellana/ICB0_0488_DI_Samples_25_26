@@ -21,6 +21,7 @@ namespace DAO
             Clients = new DAOClient(_context);
          }
 
+        public void BeginTransaction() => _context.Database.BeginTransaction();
         public void Commit() => _context.Database.CurrentTransaction?.Commit();
 
         public void Rollback() => _context.Database.CurrentTransaction?.Rollback();
