@@ -221,7 +221,7 @@ namespace Aplicacio
                     Client.GetClients().Add(clientActual);
                     Mode = TipusMode.EN_ESPERA;
                 }
-                else
+                else // actualitzant el cient
                 {
                     //clientActual.Id = id;
                     clientActual.CIF1 = cif;
@@ -229,6 +229,11 @@ namespace Aplicacio
                     clientActual.Provincia = p;
                     clientActual.EsActiva = esActiva;
                     clientActual.Tipus = te;
+
+                    UnitOfWork uow = MySQLFactory.getUOW();
+                    uow.DAOClients.UpdateClient(clientActual);
+                    
+
                 }
 
             }
@@ -331,7 +336,7 @@ namespace Aplicacio
         private void filtrar()
         {
             UnitOfWork uow = MySQLFactory.getUOW();
-            IDAOClient dao = uow.Clients;
+            IDAOClient dao = uow.DAOClients;
 
             dtgClients.ItemsSource = dao.GetClients
                 (txtCercaId.Text, txtCercaRaoSocial.Text); //Client.GetClients();

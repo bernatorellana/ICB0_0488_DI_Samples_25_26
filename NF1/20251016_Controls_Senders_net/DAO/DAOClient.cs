@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Linq;
 using System.Numerics;
@@ -18,11 +19,12 @@ namespace DAO
         private readonly MyDBContext _context;
 
 
-        public DAOClient(MyDBContext c) {
+        public DAOClient(MyDBContext c)
+        {
             _context = c;
         }
 
-        
+
 
         public Client GetClient(int id)
         {
@@ -31,9 +33,9 @@ namespace DAO
 
 
 
-        public List<Client> GetClients(string id_filtre, string rao_social_filtre)
+        public ObservableCollection<Client> GetClients(string id_filtre, string rao_social_filtre)
         {
-            List<Client> resultat = new List<Client>();
+            ObservableCollection<Client> resultat = new ObservableCollection<Client>();
             using (_context)
             {
                 using (var connexio = _context.Database.GetDbConnection()) // <== NOTA IMPORTANT: requereix ==>using Microsoft.EntityFrameworkCore;
@@ -46,20 +48,20 @@ namespace DAO
                     {
 
                         // query SQL
-                        consulta.CommandText = 
+                        consulta.CommandText =
                             @"select * from client 
                                 where 
                                 ( @ID_TEXT=-1 OR id = @ID_TEXT ) AND  					   
                                 ( @RAO_SOCIAL_TEXT='%%' OR raoSocial like @RAO_SOCIAL_TEXT)";
 
                         int id_filtre_int = -1;
-                        if(!Int32.TryParse(id_filtre, out id_filtre_int))
+                        if (!Int32.TryParse(id_filtre, out id_filtre_int))
                         {
                             id_filtre_int = -1;
                         }
 
-                        Utils.CrearParametre(consulta,  id_filtre_int, "ID_TEXT", System.Data.DbType.Int32);
-                        Utils.CrearParametre(consulta,  "%"+rao_social_filtre+"%", "RAO_SOCIAL_TEXT", System.Data.DbType.String);
+                        Utils.CrearParametre(consulta, id_filtre_int, "ID_TEXT", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, "%" + rao_social_filtre + "%", "RAO_SOCIAL_TEXT", System.Data.DbType.String);
 
 
 
@@ -71,7 +73,7 @@ namespace DAO
                             int id = reader.GetInt32(reader.GetOrdinal("id"));
                             string CIF = reader.GetString(reader.GetOrdinal("CIF"));
                             string raoSocial = reader.GetString(reader.GetOrdinal("raoSocial"));
-                            bool esActiva = reader.GetInt32(reader.GetOrdinal("esActiva"))==1;
+                            bool esActiva = reader.GetInt32(reader.GetOrdinal("esActiva")) == 1;
                             int tipus = reader.GetInt32(reader.GetOrdinal("tipus"));
                             int provincia_id = reader.GetInt32(reader.GetOrdinal("provincia_id"));
                             string imatge_url = reader.GetString(reader.GetOrdinal("imatge_url"));
@@ -98,7 +100,60 @@ namespace DAO
 
         public bool UpdateClient(Client c)
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                using (var connexio = _context.Database.GetDbConnection()) // <== NOTA IMPORTANT: requereix ==>using Microsoft.EntityFrameworkCore;
+                {
+                    // Obrir la connexió a la BD
+                    connexio.Open();
+
+                    var transaccio = connexio.BeginTransaction(); // inicia una transacció
+
+                    // Crear una consulta SQL
+                    using (var consulta = connexio.CreateCommand())
+                    {
+
+                        // query SQL
+                        consulta.CommandText =
+                            @"insert into client () values () 
+                                set
+                                    CIF                = @CIF          ,
+                                    raoSocial          = @raoSocial    ,
+                                    esActiva           = @esActiva     ,
+                                    tipus              = @tipus        ,
+                                    provincia_id       = @provincia_id ,
+                                    imatge_url         = @imatge_url  
+                                where id = @ID
+                              ";
+
+                        consulta.Transaction = transaccio; // IMPORTANT !!! NO us ho deixeu <--------------------!!!!!!!
+
+
+                        Utils.CrearParametre(consulta, c.Id, "ID", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, c.CIF1, "CIF", System.Data.DbType.String);
+                        Utils.CrearParametre(consulta, c.RaoSocial, "raoSocial", System.Data.DbType.String);
+                        Utils.CrearParametre(consulta, c.EsActiva, "esActiva", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, c.Tipus, "tipus", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, c.Provincia.Id, "provincia_id", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, "", "imatge_url", System.Data.DbType.String);
+
+                        int numeroFilesAfectades = consulta.ExecuteNonQuery(); // UPDATE; DELETE; INSERT
+
+
+                        if (numeroFilesAfectades != 1)
+                        {                            
+                            transaccio.Rollback(); // Torna enrera !!!
+                            return false;
+                        }
+                        else
+                        {
+                            transaccio.Commit();
+                            return true;
+                        }
+
+                    }
+                }
+            }
         }
     }
 }
