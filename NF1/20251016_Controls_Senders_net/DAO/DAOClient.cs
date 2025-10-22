@@ -115,7 +115,7 @@ namespace DAO
 
                         // query SQL
                         consulta.CommandText =
-                            @"insert into client () values () 
+                            @"update client 
                                 set
                                     CIF                = @CIF          ,
                                     raoSocial          = @raoSocial    ,
