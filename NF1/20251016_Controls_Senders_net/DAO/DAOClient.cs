@@ -10,6 +10,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace DAO
 {
@@ -76,7 +77,13 @@ namespace DAO
                             bool esActiva = reader.GetInt32(reader.GetOrdinal("esActiva")) == 1;
                             int tipus = reader.GetInt32(reader.GetOrdinal("tipus"));
                             int provincia_id = reader.GetInt32(reader.GetOrdinal("provincia_id"));
-                            string imatge_url = reader.GetString(reader.GetOrdinal("imatge_url"));
+
+                            // Atenció ! Aquest camp pot ser NULL :-X
+                            string imatge_url = "";
+                            if(!reader.IsDBNull(reader.GetOrdinal("imatge_url")))
+                            {
+                                imatge_url = reader.GetString(reader.GetOrdinal("imatge_url"));
+                            } 
 
                             Client c = new Client(id, CIF, raoSocial, esActiva, (TipusEmpresa)tipus,
                                 Provincia.GetProvincies().Where(x => x.Id == provincia_id).First());
@@ -125,6 +132,11 @@ namespace DAO
 
                         int numeroFilesAfectades = consulta.ExecuteNonQuery(); // UPDATE; DELETE; INSERT
 
+                        consulta.CommandText = @"select last_insert_id()";
+
+                        ulong lastId = (ulong)consulta.ExecuteScalar();
+
+                        c.Id = (int)lastId; // desem l'ID al client
 
                         if (numeroFilesAfectades != 1)
                         {

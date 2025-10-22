@@ -225,6 +225,8 @@ namespace Aplicacio
 
                     UnitOfWork uow = MySQLFactory.getUOW();
                     uow.DAOClients.InsertClient(clientActual);
+
+                    filtrar();
                 }
                 else // actualitzant el cient
                 {
