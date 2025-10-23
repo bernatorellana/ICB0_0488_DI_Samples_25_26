@@ -130,7 +130,7 @@ namespace Aplicacio
         {
 
             filtrar();
-            
+
             // Carreguem la llista de províncies al ComboBox
             cboProvincia.DisplayMemberPath = "Nom";
             cboProvincia.ItemsSource = Provincia.GetProvincies();
@@ -239,7 +239,7 @@ namespace Aplicacio
 
                     UnitOfWork uow = MySQLFactory.getUOW();
                     uow.DAOClients.UpdateClient(clientActual);
-                    
+
 
                 }
 
@@ -348,7 +348,7 @@ namespace Aplicacio
             UnitOfWork uow = MySQLFactory.getUOW();
             IDAOClient dao = uow.DAOClients;
 
-            clientsActuals = dao.GetClients(txtCercaId.Text, txtCercaRaoSocial.Text); //Client.GetClients();
+            clientsActuals = dao.GetClients(txtCercaId.Text, txtCercaRaoSocial.Text, 1, 3); //Client.GetClients();
 
             dtgClients.ItemsSource = clientsActuals;
 

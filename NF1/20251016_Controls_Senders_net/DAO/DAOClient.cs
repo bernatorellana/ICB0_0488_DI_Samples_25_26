@@ -34,7 +34,7 @@ namespace DAO
 
 
 
-        public ObservableCollection<Client> GetClients(string id_filtre, string rao_social_filtre)
+        public ObservableCollection<Client> GetClients(string id_filtre, string rao_social_filtre, int offset = 0, int rows_per_page = -1)
         {
             ObservableCollection<Client> resultat = new ObservableCollection<Client>();
             using (_context)
@@ -54,6 +54,11 @@ namespace DAO
                                 where 
                                 ( @ID_TEXT=-1 OR id = @ID_TEXT ) AND  					   
                                 ( @RAO_SOCIAL_TEXT='%%' OR raoSocial like @RAO_SOCIAL_TEXT)";
+
+                        if (rows_per_page > 0)
+                        {
+                            consulta.CommandText += $" limit {rows_per_page} offset {offset}";
+                        }
 
                         int id_filtre_int = -1;
                         if (!Int32.TryParse(id_filtre, out id_filtre_int))
@@ -80,10 +85,10 @@ namespace DAO
 
                             // Atenció ! Aquest camp pot ser NULL :-X
                             string imatge_url = "";
-                            if(!reader.IsDBNull(reader.GetOrdinal("imatge_url")))
+                            if (!reader.IsDBNull(reader.GetOrdinal("imatge_url")))
                             {
                                 imatge_url = reader.GetString(reader.GetOrdinal("imatge_url"));
-                            } 
+                            }
 
                             Client c = new Client(id, CIF, raoSocial, esActiva, (TipusEmpresa)tipus,
                                 Provincia.GetProvincies().Where(x => x.Id == provincia_id).First());
@@ -197,7 +202,7 @@ namespace DAO
 
 
                         if (numeroFilesAfectades != 1)
-                        {                            
+                        {
                             transaccio.Rollback(); // Torna enrera !!!
                             return false;
                         }
