@@ -32,7 +32,40 @@ namespace DAO
             throw new NotImplementedException();
         }
 
+        public int GetNumeroClients(string id_filtre, string rao_social_filtre)
+        {
+            using (_context)
+            {
+                using (var connexio = _context.Database.GetDbConnection()) // <== NOTA IMPORTANT: requereix ==>using Microsoft.EntityFrameworkCore;
+                {
+                    // Obrir la connexió a la BD
+                    connexio.Open();
 
+                    // Crear una consulta SQL
+                    using (var consulta = connexio.CreateCommand())
+                    {
+
+                        // query SQL
+                        consulta.CommandText = @"select count(1) from client
+                                where
+                                (@ID_TEXT = -1 OR id = @ID_TEXT) AND
+                                (@RAO_SOCIAL_TEXT = '%%' OR raoSocial like @RAO_SOCIAL_TEXT)";
+
+
+                        int id_filtre_int = -1;
+                        if (!Int32.TryParse(id_filtre, out id_filtre_int))
+                        {
+                            id_filtre_int = -1;
+                        }
+
+                        Utils.CrearParametre(consulta, id_filtre_int, "ID_TEXT", System.Data.DbType.Int32);
+                        Utils.CrearParametre(consulta, "%" + rao_social_filtre + "%", "RAO_SOCIAL_TEXT", System.Data.DbType.String);
+
+                        return (int)(long)consulta.ExecuteScalar();
+                    }
+                }
+            }
+        }
 
         public ObservableCollection<Client> GetClients(string id_filtre, string rao_social_filtre, int offset = 0, int rows_per_page = -1)
         {

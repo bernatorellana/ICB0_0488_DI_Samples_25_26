@@ -10,6 +10,9 @@ namespace IDAO
 {
     public interface IDAOClient
     {
+
+        public int GetNumeroClients(string id_filtre, string rao_social_filtre);
+
         public ObservableCollection<Client> GetClients(string id, string rao_social, int offset = 0, int rows_per_page = -1);
 
         public Client GetClient(int id);

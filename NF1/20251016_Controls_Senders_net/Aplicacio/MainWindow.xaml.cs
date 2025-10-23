@@ -342,14 +342,35 @@ namespace Aplicacio
 
 
         private ObservableCollection<Client> clientsActuals;
+        private int numeroClients=0;
+        private int registresPerPagina = 5;
+
+        private int pagina;
+
+        public int Pagina
+        {
+            get { return pagina; }
+            set
+            {
+                if (value >= 0 && value < numeroClients / registresPerPagina)
+                {
+                    pagina = value;
+                    filtrar();
+                }
+            }
+        }
+
 
         private void filtrar()
         {
             UnitOfWork uow = MySQLFactory.getUOW();
             IDAOClient dao = uow.DAOClients;
+            clientsActuals = dao.GetClients(txtCercaId.Text, txtCercaRaoSocial.Text, Pagina*registresPerPagina, registresPerPagina); //Client.GetClients();
 
-            clientsActuals = dao.GetClients(txtCercaId.Text, txtCercaRaoSocial.Text, 1, 3); //Client.GetClients();
-
+            uow = MySQLFactory.getUOW();
+            dao = uow.DAOClients;
+            numeroClients = dao.GetNumeroClients(txtCercaId.Text, txtCercaRaoSocial.Text);
+            
             dtgClients.ItemsSource = clientsActuals;
 
 
@@ -379,6 +400,16 @@ namespace Aplicacio
                 }                
             }*/
             return clientsFiltrats;
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Pagina--;
+        }
+
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            Pagina++;
         }
     }
 }

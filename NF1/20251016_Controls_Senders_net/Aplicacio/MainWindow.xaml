@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -142,5 +143,11 @@
 
         </Grid>
 
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button x:Name="btnBack" Click="btnBack_Click" Margin="10">BACK</Button>
+            <TextBox x:Name="txtPagina" Text="{Binding Pagina}" ></TextBox>
+            <Button x:Name="btnNext" Click="btnNext_Click" Margin="10">NEXT</Button>
+        </StackPanel>
+        
     </Grid>
 </Window>
