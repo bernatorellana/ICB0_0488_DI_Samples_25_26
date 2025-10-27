@@ -9,9 +9,14 @@ namespace DAO
 {
     public class MySQLFactory
     {
-        public static UnitOfWork getUOW()
+        public static void getUOW(Action<UnitOfWork> action)
         {
-            return new UnitOfWork(new MyDBContext());
+            using (var uow = new UnitOfWork(new MyDBContext()))
+            {
+                uow.BeginTransaction();
+                action(uow);
+                
+            }
         }
     }
 }

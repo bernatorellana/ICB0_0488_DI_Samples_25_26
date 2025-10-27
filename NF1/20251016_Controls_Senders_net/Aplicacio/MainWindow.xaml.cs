@@ -223,8 +223,11 @@ namespace Aplicacio
                     clientsActuals.Add(clientActual);
                     Mode = TipusMode.EN_ESPERA;
 
-                    UnitOfWork uow = MySQLFactory.getUOW();
-                    uow.DAOClients.InsertClient(clientActual);
+                    MySQLFactory.getUOW( uow => 
+                        {
+                            uow.DAOClients.InsertClient(clientActual);
+                        }                    
+                    );
 
                     filtrar();
                 }
@@ -237,9 +240,12 @@ namespace Aplicacio
                     clientActual.EsActiva = esActiva;
                     clientActual.Tipus = te;
 
-                    UnitOfWork uow = MySQLFactory.getUOW();
-                    uow.DAOClients.UpdateClient(clientActual);
-
+                    MySQLFactory.getUOW(uow =>
+                        {
+                            uow.DAOClients.UpdateClient(clientActual);
+                            uow.Commit();
+                        }
+                    );
 
                 }
 
@@ -352,7 +358,7 @@ namespace Aplicacio
             get { return pagina; }
             set
             {
-                if (value >= 0 && value < numeroClients / registresPerPagina)
+                if (value >= 0 && value < numeroClients / registresPerPagina +1)
                 {
                     pagina = value;
                     filtrar();
@@ -363,14 +369,14 @@ namespace Aplicacio
 
         private void filtrar()
         {
-            UnitOfWork uow = MySQLFactory.getUOW();
-            IDAOClient dao = uow.DAOClients;
-            clientsActuals = dao.GetClients(txtCercaId.Text, txtCercaRaoSocial.Text, Pagina*registresPerPagina, registresPerPagina); //Client.GetClients();
-
-            uow = MySQLFactory.getUOW();
-            dao = uow.DAOClients;
-            numeroClients = dao.GetNumeroClients(txtCercaId.Text, txtCercaRaoSocial.Text);
             
+            MySQLFactory.getUOW(uow =>
+            {
+                IDAOClient dao = uow.DAOClients;
+                clientsActuals = dao.GetClients(txtCercaId.Text, txtCercaRaoSocial.Text, Pagina * registresPerPagina, registresPerPagina); //Client.GetClients();
+                numeroClients = dao.GetNumeroClients(txtCercaId.Text, txtCercaRaoSocial.Text);           
+            });
+
             dtgClients.ItemsSource = clientsActuals;
 
 

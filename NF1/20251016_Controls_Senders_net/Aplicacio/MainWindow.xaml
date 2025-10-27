@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Aplicacio"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
+        x:Name="mainWindow"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -145,7 +146,9 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button x:Name="btnBack" Click="btnBack_Click" Margin="10">BACK</Button>
-            <TextBox x:Name="txtPagina" Text="{Binding Pagina}" ></TextBox>
+            <TextBox x:Name="txtPagina" Text="{Binding ElementName=mainWindow, Path=Pagina}"
+                     VerticalAlignment="Center"
+                     ></TextBox>
             <Button x:Name="btnNext" Click="btnNext_Click" Margin="10">NEXT</Button>
         </StackPanel>
         
