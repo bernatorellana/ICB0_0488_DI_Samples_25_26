@@ -1,0 +1,239 @@
+[
+  {
+    "name": "Barbarian",
+    "brief": "A Fierce Warrior of Primal Rage",
+    "description": "Barbarians are mighty warriors who are powered by primal forces of the multiverse that manifest as a Rage.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/616/340/340/638607453023067922.png",
+    "primary_ability": "Strength",
+    "hit_point_die": "D12",
+    "save_thows": [
+      "Strength",
+      "Constitution"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Bard",
+    "brief": "An Inspiring Performer of Music, Dance, and Magic",
+    "description": "Bards are expert at inspiring others, soothing hurts, disheartening foes, and creating illusions.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/761/340/340/638607457245511905.png",
+    "primary_ability": "Charisma",
+    "hit_point_die": "D8",
+    "save_thows": [
+      "Dexterity",
+      "Charisma"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Cleric",
+    "brief": "A Miraculous Priest of Divine Power",
+    "description": "Clerics can reach out to the divine magic of the Outer Planes and channel it to bolster people and battle foes.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/781/340/340/638607457554042127.png",
+    "primary_ability": "Wisdom",
+    "hit_point_die": "D8",
+    "save_thows": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Druid",
+    "brief": "A Nature Priest of Primal Power",
+    "description": "Druids call on the forces of nature, harnessing magic to heal, transform into animals, and wield elemental destruction.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/799/340/340/638607457908403420.png",
+    "primary_ability": "Wisdom",
+    "hit_point_die": "D8",
+    "save_thows": [
+      "Intelligence",
+      "Wisdom"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Fighter",
+    "brief": "A Master of All Arms and Armor",
+    "description": "Fighters all share an unparalleled prowess with weapons and armor, and are well acquainted with death, both meting it out and defying it.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/814/340/340/638607458269463970.png",
+    "primary_ability": "Strength or Dexterity",
+    "hit_point_die": "D10",
+    "save_thows": [
+      "Strength",
+      "Constitution"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Monk",
+    "brief": "A Martial Artist of Supernatural Focus",
+    "description": "Monks focus their internal reservoirs of power to create extraordinary, even supernatural, effects.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/745/340/340/638607456917821521.png",
+    "hit_point_die": "D8",
+    "save_thows": [
+      "Strength",
+      "Dexterity"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Paladin",
+    "brief": "A Devout Warrior of Sacred Oaths",
+    "description": "Paladins live on the front lines of the cosmic struggle, united by their oaths against the forces of annihilation.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/833/340/340/638607458606593169.png",
+    "hit_point_die": "D10",
+    "save_thows": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Ranger",
+    "brief": "A Wandering Warrior Imbued with Primal Magic",
+    "description": "Rangers are honed with deadly focus and\u00a0harness primal powers to protect the world from the ravages of monsters and tyrants.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/843/340/340/638607458995223669.png",
+    "hit_point_die": "D10",
+    "save_thows": [
+      "Strength",
+      "Dexterity"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Rogue",
+    "brief": "A Dexterous Expert in Stealth and Subterfuge",
+    "description": "Rogues have a knack for finding the solution to just about any problem, prioritizing subtle strikes over brute strength.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/854/340/340/638607459374423812.png",
+    "primary_ability": "Dexterity",
+    "hit_point_die": "D8",
+    "save_thows": [
+      "Dexterity",
+      "Intelligence"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Sorcerer",
+    "brief": "A Dazzling Mage Filled with Innate Magic",
+    "description": "Sorcerers harness and channel the raw, roiling power of innate magic that is stamped into their very being.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/872/340/340/638607459720722432.png",
+    "primary_ability": "Charisma",
+    "hit_point_die": "D6",
+    "save_thows": [
+      "Constitution",
+      "Charisma"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Warlock",
+    "brief": "An Occultist Empowered by Otherworldly Pacts",
+    "description": "Warlocks quest for knowledge that lies hidden in the fabric of the multiverse, piecing together arcane secrets to bolster their own power.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/891/340/340/638607460050510779.png",
+    "primary_ability": "Charisma",
+    "hit_point_die": "D8",
+    "save_thows": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  },
+  {
+    "name": "Wizard",
+    "brief": "A Scholarly Magic-User of Arcane Power",
+    "description": "Wizards cast spells of explosive fire, arcing lightning, subtle deception, and spectacular transformations.",
+    "image_url": "https://www.dndbeyond.com/avatars/thumbnails/43940/904/340/340/638607460392160246.png",
+    "primary_ability": "Intelligence",
+    "hit_point_die": "D6",
+    "save_thows": [
+      "Intelligence",
+      "Wisdom"
+    ],
+    "skills": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
+  }
+]
