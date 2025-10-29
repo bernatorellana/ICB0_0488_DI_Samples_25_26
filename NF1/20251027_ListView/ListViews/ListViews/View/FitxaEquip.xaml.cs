@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ListViews.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using DependencyPropertyGenerator;
 namespace ListViews.View
 {
-    /// <summary>
-    /// Lógica de interacción para FitxaEquip.xaml
-    /// </summary>
+
+
     public partial class FitxaEquip : UserControl
     {
         public FitxaEquip()
         {
             InitializeComponent();
+            
         }
+
+
     }
 }

@@ -14,24 +14,30 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="lsbTeams">
+        <ListView x:Name="lsbTeams" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemContainerStyle>
+                <Style  TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid>
+                    <Grid Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Image Width="100" Source="{Binding UrlLogo}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ></Image>
-                        <TextBlock FontWeight="ExtraBold" TextWrapping="Wrap" Text="{Binding Nom}" Grid.Column="1" Grid.Row="0"></TextBlock>
+                        <Image Width="100" Source="{Binding UrlLogo}" Margin="20" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ></Image>
+                        <TextBlock Padding="5" Background="LightGray"  FontWeight="ExtraBold" TextWrapping="Wrap" Text="{Binding Nom}" Grid.Column="1" Grid.Row="0"></TextBlock>
 
-                        <TextBlock  Width="200" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding ReducedDesc}" ></TextBlock>
-
+                        <TextBlock  Padding="5"  Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding ReducedDesc}" ></TextBlock>
+    
 
                     </Grid>
                     
