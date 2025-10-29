@@ -28,5 +28,11 @@ namespace ListViews
 
             fitxa.TheEquip = Equip.getLlistaEquips()[2];
         }
+
+        private void lsbTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Equip equipSeleccionat = (Equip) lsbTeams.SelectedItem;
+            fitxa.TheEquip = equipSeleccionat;
+        }
     }
 }

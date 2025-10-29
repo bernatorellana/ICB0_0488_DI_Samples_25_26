@@ -18,6 +18,7 @@
         
         
         <ListView x:Name="lsbTeams" 
+                  SelectionChanged="lsbTeams_SelectionChanged"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
             <ListView.ItemTemplate>
