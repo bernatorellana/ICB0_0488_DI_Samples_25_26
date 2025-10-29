@@ -27,5 +27,19 @@ namespace ListViews.View
         }
 
 
+
+        public Equip TheEquip
+        {
+            get { return (Equip)GetValue(TheEquipProperty); }
+            set { SetValue(TheEquipProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TheEquip.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TheEquipProperty =
+            DependencyProperty.Register("TheEquip", typeof(Equip), typeof(FitxaEquip), new PropertyMetadata(null));
+
+
+
+
     }
 }

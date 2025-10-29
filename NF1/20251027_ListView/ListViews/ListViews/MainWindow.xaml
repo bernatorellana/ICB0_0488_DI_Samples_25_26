@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ListViews"
+        xmlns:local="clr-namespace:ListViews" xmlns:view="clr-namespace:ListViews.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Loaded="Window_Loaded"
@@ -14,13 +14,12 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+        <view:FitxaEquip Grid.Column="1" Height="200"></view:FitxaEquip>
+        
+        
         <ListView x:Name="lsbTeams" 
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <ListView.ItemContainerStyle>
-                <Style  TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListView.ItemContainerStyle>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
 
@@ -36,9 +35,7 @@
                         <Image Width="100" Source="{Binding UrlLogo}" Margin="20" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ></Image>
                         <TextBlock Padding="5" Background="LightGray"  FontWeight="ExtraBold" TextWrapping="Wrap" Text="{Binding Nom}" Grid.Column="1" Grid.Row="0"></TextBlock>
 
-                        <TextBlock  Padding="5"  Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding ReducedDesc}" ></TextBlock>
-    
-
+                        <TextBlock Padding="5"  Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding ReducedDesc}" ></TextBlock>
                     </Grid>
                     
                 </DataTemplate>

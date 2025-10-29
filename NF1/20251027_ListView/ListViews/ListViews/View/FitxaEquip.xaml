@@ -18,7 +18,7 @@
         <Image Width="100" Source="{Binding UrlLogo, FallbackValue='https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/min.png'}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ></Image>
         <TextBlock FontWeight="ExtraBold" TextWrapping="Wrap" Text="{Binding Nom, FallbackValue=Timberwolves}" Grid.Column="1" Grid.Row="0"></TextBlock>
 
-        <TextBlock  Width="200" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding ReducedDesc, FallbackValue='Lorem ipsum dolor' }" ></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding ReducedDesc, FallbackValue='Lorem ipsum dolor' }" ></TextBlock>
 
     </Grid>
 </UserControl>
