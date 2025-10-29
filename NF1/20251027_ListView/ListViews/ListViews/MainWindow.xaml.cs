@@ -25,6 +25,8 @@ namespace ListViews
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             lsbTeams.ItemsSource = Equip.getLlistaEquips();
+
+            fitxa.TheEquip = Equip.getLlistaEquips()[2];
         }
     }
 }

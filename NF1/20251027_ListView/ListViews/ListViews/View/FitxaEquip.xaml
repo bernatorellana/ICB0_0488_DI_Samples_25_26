@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ListViews.View"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300">
-    <Grid>
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -15,10 +15,24 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Width="100" Source="{Binding UrlLogo, FallbackValue='https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/min.png'}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ></Image>
-        <TextBlock FontWeight="ExtraBold" TextWrapping="Wrap" Text="{Binding Nom, FallbackValue=Timberwolves}" Grid.Column="1" Grid.Row="0"></TextBlock>
+        <Image Width="100" 
+               Source="{Binding  
+                                RelativeSource={RelativeSource AncestorType=local:FitxaEquip}, 
+                                Path=TheEquip.UrlLogo,
+                                FallbackValue='https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/min.png'}"
+               Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ></Image>
+        <TextBlock Padding="5" FontWeight="ExtraBold" TextWrapping="Wrap"
+                   Text="{Binding 
+                        RelativeSource={RelativeSource AncestorType=local:FitxaEquip}, 
+                        Path=TheEquip.Nom,
+                        FallbackValue=Timberwolves}" Grid.Column="1" Grid.Row="0"></TextBlock>
 
-        <TextBlock Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding ReducedDesc, FallbackValue='Lorem ipsum dolor' }" ></TextBlock>
+        <TextBlock Padding="5" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" 
+                   TextWrapping="Wrap" 
+                   Text="{Binding 
+                            RelativeSource={RelativeSource AncestorType=local:FitxaEquip}, 
+                            Path=TheEquip.ReducedDesc,
+            FallbackValue='Lorem ipsum dolor' }" ></TextBlock>
 
     </Grid>
 </UserControl>
