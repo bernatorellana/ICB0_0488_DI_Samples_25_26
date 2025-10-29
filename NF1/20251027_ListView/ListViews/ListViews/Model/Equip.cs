@@ -47,7 +47,7 @@ namespace ListViews.Model
 
 
         public DateTime DataCreacio { get => dataCreacio; set => dataCreacio = value; }
-        public OC<Jugador> Jugador { get => jugador; set => jugador = value; }
+        public OC<Jugador> Jugadors { get => jugador; set => jugador = value; }
         public Persona Coach { get => coach; set => coach = value; }
         public Conferencia Conf { get => conf; set => conf = value; }
 
@@ -55,12 +55,12 @@ namespace ListViews.Model
 
         public Boolean Add(Jugador nouJugador)
         {
-            if (this.Jugador.Contains(nouJugador))
+            if (this.Jugadors.Contains(nouJugador))
             {
                 return false;
             }
 
-            this.Jugador.Add(nouJugador);
+            this.Jugadors.Add(nouJugador);
 
             return true;
         }
