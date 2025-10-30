@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="ListViews.View.FilaJugador"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ListViews.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" 
+                   HorizontalAlignment="Center" 
+                   FontSize="30" FontWeight="ExtraBlack"
+                   Grid.Column="0" 
+                   Text="{Binding 
+            RelativeSource={RelativeSource AncestorType=local:FilaJugador}, 
+            Path=TheJugador.Dorsal, FallbackValue=23}"></TextBlock>
+        
+        
+        
+        
+        
+        
+        <Border Grid.Column="1" BorderBrush="#aaaaaa" BorderThickness="2">
+            <Image Width="50" Source="{Binding 
+                RelativeSource={RelativeSource AncestorType=local:FilaJugador}, 
+                Path=TheJugador.UrlFoto, 
+                FallbackValue='https://www.proballers.com/media/cache/resize_600_png/https---www.proballers.com/ul/player/1-1ef7f627-301a-6be4-a79b-ab34b8448102.png'}" ></Image>
+        </Border>
+        <TextBlock VerticalAlignment="Center" 
+                   FontSize="20"
+                   HorizontalAlignment="Center" Grid.Column="2" 
+                   Text="{Binding RelativeSource={RelativeSource AncestorType=local:FilaJugador}, 
+                   Path=TheJugador.Nom, FallbackValue='Michael Jordan'}"></TextBlock>
+
+    </Grid>
+</UserControl>
