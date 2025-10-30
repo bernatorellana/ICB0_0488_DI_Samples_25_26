@@ -20,7 +20,12 @@
         <ListView x:Name="lsbTeams" 
                   SelectionChanged="lsbTeams_SelectionChanged"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <view:FitxaEquip TheEquip="{Binding}"></view:FitxaEquip>    

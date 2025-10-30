@@ -27,10 +27,6 @@ namespace ListViews.View
         }
 
 
-
-
-
-
         public Jugador TheJugador
         {
             get { return (Jugador)GetValue(TheJugadorProperty); }
