@@ -34,5 +34,10 @@ namespace ListViews
             Equip equipSeleccionat = (Equip) lsbTeams.SelectedItem;
             fitxa.TheEquip = equipSeleccionat;
         }
+
+        private void fitxa_SelectedPlayerChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("EI!!!!");
+        }
     }
 }

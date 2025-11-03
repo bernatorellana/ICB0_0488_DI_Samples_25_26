@@ -19,13 +19,17 @@ namespace ListViews.View
 
     public partial class FitxaEquip : UserControl
     {
+
+
+        public event EventHandler SelectedPlayerChanged;
+
         public FitxaEquip()
         {
             InitializeComponent();
             
         }
 
-
+        #region Dependency_Properties 
 
         public Equip TheEquip
         {
@@ -37,8 +41,25 @@ namespace ListViews.View
         public static readonly DependencyProperty TheEquipProperty =
             DependencyProperty.Register("TheEquip", typeof(Equip), typeof(FitxaEquip), new PropertyMetadata(null));
 
+        //=================================================
 
+        public Jugador TheJugador
+        {
+            get { return (Jugador)GetValue(TheJugadorProperty); }
+            set { SetValue(TheJugadorProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for TheJugador.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TheJugadorProperty =
+            DependencyProperty.Register("TheJugador", typeof(Jugador), typeof(FitxaEquip), new PropertyMetadata(null));
 
+        #endregion
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TheJugador = lsvJugadors.SelectedItem as Jugador;
+
+            SelectedPlayerChanged?.Invoke(this,new EventArgs());
+        }
     }
 }
