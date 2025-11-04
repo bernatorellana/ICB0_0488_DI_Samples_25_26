@@ -13,13 +13,15 @@ namespace DAO
         private readonly MyDBContext _context;
 
         public IDAOClient DAOClients { get; }
+        public IDAOProvincia DAOProvincia{ get; }
         
 
         public UnitOfWork(MyDBContext context)
         {
             _context = context;
             DAOClients = new DAOClient(_context);
-         }
+            DAOProvincia = new DAOProvincia(_context); 
+        }
 
         public void BeginTransaction() => _context.Database.BeginTransaction();
         public void Commit() => _context.Database.CurrentTransaction?.Commit();

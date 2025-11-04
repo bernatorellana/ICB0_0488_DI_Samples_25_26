@@ -21,7 +21,7 @@ namespace IDAO
 
         public bool InsertClient(Client c);
 
-
+        public bool DeleteClient(int id);
 
     }
 }

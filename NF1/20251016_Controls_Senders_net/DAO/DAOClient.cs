@@ -31,7 +31,10 @@ namespace DAO
 
         public Client GetClient(int id)
         {
-            throw new NotImplementedException();
+            ObservableCollection<Client> clients =
+                GetClients("" + id, "");
+            if (clients.Count == 0) return null;
+            else return clients[0];
         }
 
         public int GetNumeroClients(string id_filtre, string rao_social_filtre)
@@ -196,7 +199,7 @@ namespace DAO
                     }
                     else
                     {
-                        transaccio.Commit();
+                        //transaccio.Commit();
                         return true;
                     }
 
@@ -265,6 +268,57 @@ namespace DAO
 
             }
         }
+
+
+
+
+        public bool DeleteClient(int id)
+        {
+
+            var connexio = _context.Database.GetDbConnection();
+
+            // Obrir la connexió a la BD
+            if (connexio.State == System.Data.ConnectionState.Closed)
+            {
+                connexio.Open();
+            }
+
+            //var transaccio = connexio.BeginTransaction(); // inicia una transacció
+            var transaccio = _context.Database.CurrentTransaction;
+            if (transaccio == null) throw new Exception("NO TRANSACTION");
+
+            // Crear una consulta SQL
+            using (var consulta = connexio.CreateCommand())
+            {
+
+                // query SQL
+                consulta.CommandText =
+                    @"delete from client where id = @ID ";
+
+                consulta.Transaction = _context.Database.CurrentTransaction?.GetDbTransaction(); // IMPORTANT !!! NO us ho deixeu <--------------------!!!!!!!
+
+                Utils.CrearParametre(consulta, id, "ID", System.Data.DbType.Int32);
+                
+                int numeroFilesAfectades = consulta.ExecuteNonQuery(); // UPDATE; DELETE; INSERT
+
+
+                if (numeroFilesAfectades != 1)
+                {
+                    transaccio.Rollback(); // Torna enrera !!!
+                    return false;
+                }
+                else
+                {
+                    // Hem decidit fer el commit a fora...això és opcional, és clar.
+                    //transaccio.Commit();
+                    return true;
+                }
+
+            }
+        }
+
+
+
     }
 
 }
