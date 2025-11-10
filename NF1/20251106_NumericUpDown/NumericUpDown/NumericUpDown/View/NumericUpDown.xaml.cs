@@ -21,8 +21,8 @@ namespace NumericUpDown.View
     /// </summary>
     /// 
 
-    [DependencyProperty<int>("Min", DefaultValue = 0, Description = "Min value",OnChanged ="OnMinChanged")]
-    [DependencyProperty<int>("Max", DefaultValue = 0, Description = "Max value",OnChanged ="OnMinChanged")]
+    [DependencyProperty<int>("Min", DefaultValue = 0, Description = "Min value",OnChanged = "OnMinChanged")]
+    [DependencyProperty<int>("Max", DefaultValue = 100, Description = "Max value",OnChanged = "OnMaxChanged")]
     [DependencyProperty<int>("Valor", DefaultValue = 0, Description = "El valor",OnChanged ="ValorChanged")]
     
     public partial class NumericUpDown : UserControl
@@ -31,38 +31,62 @@ namespace NumericUpDown.View
         {
             InitializeComponent();
         }
-        public void OnMinChanged()
+        public void OnMinChanged(int old, int newValue)
         {
-            int i = 0;
+            if(Min>=Max)
+            {
+                Min = Max - 1;
+            }
+            ValorChanged();
+        }
+        public void OnMaxChanged(int old, int newValue)
+        {
+            if (Min >= Max)
+            {
+                Max = Min + 1;
+            }
+            ValorChanged();
         }
         public void ValorChanged()
         {
-            if (Valor > Max) Valor = Max;
+            Valor = Math.Clamp(Valor, Min, Max);
+            btnMenys.IsEnabled = Valor != Min;
+            btnMes.IsEnabled   = Valor != Max;
         }
 
-     /*   public int Valor
+        private void btnMenys_Click(object sender, RoutedEventArgs e)
         {
-            get { return (int)GetValue(ValorProperty); }
-            set { SetValue(ValorProperty, value); }
+            Valor--;
         }
 
-        // Using a DependencyProperty as the backing store for Valor.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ValorProperty =
-            DependencyProperty.Register("Valor", typeof(int), typeof(NumericUpDown), new PropertyMetadata(0,ValorChangedCallbackStatic));
-
-        private static void ValorChangedCallbackStatic(
-            DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private void btnMes_Click(object sender, RoutedEventArgs e)
         {
-            NumericUpDown obj = (NumericUpDown)d;
-            obj.ValorChangedCallback(e);
+            Valor++;
         }
 
-        private void ValorChangedCallback(DependencyPropertyChangedEventArgs e)
-        {
-            // Sóc un desgraciat per haver arribat fins aquí
-            if(Valor>Max) Valor = Max;
-        }
-        */
+        /*   public int Valor
+           {
+               get { return (int)GetValue(ValorProperty); }
+               set { SetValue(ValorProperty, value); }
+           }
+
+           // Using a DependencyProperty as the backing store for Valor.  This enables animation, styling, binding, etc...
+           public static readonly DependencyProperty ValorProperty =
+               DependencyProperty.Register("Valor", typeof(int), typeof(NumericUpDown), new PropertyMetadata(0,ValorChangedCallbackStatic));
+
+           private static void ValorChangedCallbackStatic(
+               DependencyObject d, DependencyPropertyChangedEventArgs e)
+           {
+               NumericUpDown obj = (NumericUpDown)d;
+               obj.ValorChangedCallback(e);
+           }
+
+           private void ValorChangedCallback(DependencyPropertyChangedEventArgs e)
+           {
+               // Sóc un desgraciat per haver arribat fins aquí
+               if(Valor>Max) Valor = Max;
+           }
+           */
 
         //-------------------------------------------
 

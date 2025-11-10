@@ -13,8 +13,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" FontSize="30" VerticalAlignment="Stretch" VerticalContentAlignment="Center">-</Button>
-        <Button Grid.Column="2" FontSize="30" VerticalAlignment="Stretch" VerticalContentAlignment="Center">+</Button>
+        <Button x:Name="btnMenys" Click="btnMenys_Click" Grid.Column="0" FontSize="30" VerticalAlignment="Stretch" VerticalContentAlignment="Center">-</Button>
+        <Button x:Name="btnMes"   Click="btnMes_Click" Grid.Column="2" FontSize="30" VerticalAlignment="Stretch" VerticalContentAlignment="Center">+</Button>
         <TextBox Grid.Column="1" 
                  FontSize="40"
                  Text="{Binding 

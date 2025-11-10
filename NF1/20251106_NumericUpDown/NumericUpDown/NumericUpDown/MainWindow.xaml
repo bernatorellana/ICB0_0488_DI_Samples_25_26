@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <view:NumericUpDown x:Name="num" Valor="12" Max="10" Min="0"></view:NumericUpDown>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <view:NumericUpDown Grid.Row="0" x:Name="num" Valor="12" Max="{Binding ElementName=numMax,Path=Valor,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Min="{Binding ElementName=numMin,Path=Valor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></view:NumericUpDown>
+        <view:NumericUpDown Grid.Row="1" x:Name="numMin" Valor="0" Max="100" Min="0"></view:NumericUpDown>
+        <view:NumericUpDown Grid.Row="2" x:Name="numMax" Valor="100" Max="100" Min="0"></view:NumericUpDown>
     </Grid>
 </Window>
