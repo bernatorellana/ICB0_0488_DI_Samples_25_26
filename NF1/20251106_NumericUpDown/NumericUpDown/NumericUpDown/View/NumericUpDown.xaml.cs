@@ -25,7 +25,6 @@ namespace NumericUpDown.View
     [DependencyProperty<int>("Max", DefaultValue = 0, Description = "Max value",OnChanged ="OnMinChanged")]
     [DependencyProperty<int>("Valor", DefaultValue = 0, Description = "El valor",OnChanged ="ValorChanged")]
     
-    
     public partial class NumericUpDown : UserControl
     {
         public NumericUpDown()
