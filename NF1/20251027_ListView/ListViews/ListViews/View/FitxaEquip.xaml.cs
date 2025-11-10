@@ -61,5 +61,26 @@ namespace ListViews.View
 
             SelectedPlayerChanged?.Invoke(this,new EventArgs());
         }
+
+
+        //--------------------------------------
+
+
+
+
+        public int Valor
+        {
+            get { return (int)GetValue(ValorProperty); }
+            set { SetValue(ValorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Valor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ValorProperty =
+            DependencyProperty.Register("Valor", typeof(int), typeof(Fi), new PropertyMetadata(0));
+
+
+
+
+
     }
 }
