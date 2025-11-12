@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestioDequips.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,17 @@ namespace Pages
         public PageJugadors()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            lsvJugadors.ItemsSource = Equip.getLlistaEquips()[0].Jugador;
+        }
+
+        private void lsvJugadors_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // navegar cap a PageEdicioJugador passant el jugador seleccionat
+
         }
     }
 }
