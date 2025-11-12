@@ -21,6 +21,9 @@ namespace Pages.View
     /// </summary>
     public partial class PageEdicioJugador : Page
     {
+
+        private Jugador j;
+
         public PageEdicioJugador()
         {
             InitializeComponent();
@@ -28,19 +31,39 @@ namespace Pages.View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            NavigationService.LoadCompleted += NavigationService_LoadCompleted;
         }
 
-        private void NavigationService_LoadCompleted(object sender, NavigationEventArgs e)
+        public void NavigationService_LoadCompleted(object sender, NavigationEventArgs e)
         {
             // Aquest és el paràmetre que m'estan passant des de la navegació !!!!!!
             object parametre = e.ExtraData;
             if (parametre == null || !(parametre is Jugador)) throw new Exception("Paràmetre invàlid");
+
+            j = (Jugador)parametre;
+
+            txtCognoms.Text = j.Cognoms;
+            txtDorsal.Text = j.Dorsal+"";
+            //imgFoto.Source = j.UrlFoto;
+
+            if (NavigationService != null) NavigationService.LoadCompleted -= NavigationService_LoadCompleted;
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            if(NavigationService!=null) NavigationService.LoadCompleted -= NavigationService_LoadCompleted;
+            
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+            j.Cognoms = txtCognoms.Text;
+            j.Dorsal = Int32.Parse(txtDorsal.Text);
+            NavigationService.GoBack();
         }
     }
 }

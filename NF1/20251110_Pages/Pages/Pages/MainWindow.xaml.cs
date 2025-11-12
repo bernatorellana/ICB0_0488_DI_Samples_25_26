@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using GestioDequips.Model;
+using Pages.View;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,12 +21,15 @@ namespace Pages
 
         public PageLlistaEquips PaginaLlistaEquips { get; set; }
         public PageJugadors PaginaLlistaJugadors { get; set; }
+        public PageEdicioJugador PaginaEdicioJugador { get; set; }
+
 
         public MainWindow()
         {
             InitializeComponent();
             PaginaLlistaEquips = new PageLlistaEquips();
-            PaginaLlistaJugadors = new PageJugadors();
+            PaginaLlistaJugadors = new PageJugadors(this);
+            PaginaEdicioJugador = new PageEdicioJugador();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,6 +46,13 @@ namespace Pages
         private void mnuPlayers_Click(object sender, RoutedEventArgs e)
         {
             frmMain.Navigate(PaginaLlistaJugadors);
+        }
+
+        internal void mostrarEdicioJugador(Jugador? jugador)
+        {
+
+            frmMain.LoadCompleted += PaginaEdicioJugador.NavigationService_LoadCompleted;
+            frmMain.Navigate(PaginaEdicioJugador, jugador);
         }
     }
 }

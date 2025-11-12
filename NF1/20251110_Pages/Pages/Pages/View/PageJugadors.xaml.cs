@@ -21,20 +21,24 @@ namespace Pages
     /// </summary>
     public partial class PageJugadors : Page
     {
-        public PageJugadors()
+        private MainWindow mainWindow;
+
+        public PageJugadors(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            lsvJugadors.ItemsSource = null;
             lsvJugadors.ItemsSource = Equip.getLlistaEquips()[0].Jugador;
         }
 
         private void lsvJugadors_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             // navegar cap a PageEdicioJugador passant el jugador seleccionat
-
+            mainWindow.mostrarEdicioJugador(lsvJugadors.SelectedItem as Jugador);
         }
     }
 }

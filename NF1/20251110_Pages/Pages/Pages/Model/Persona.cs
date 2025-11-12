@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace GestioDequips.Model
 {
-    public class Persona
+    public class Persona: INotifyPropertyChanged
     {
         private long id;
         private string nom;
@@ -32,6 +33,8 @@ namespace GestioDequips.Model
         public string Cognoms { get => congnoms; set => congnoms = value; }
         public string Nacionalitat { get => nacionalitat; set => nacionalitat = value; }
         public string UrlFoto { get => urlFoto; set => urlFoto = value; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public override bool Equals(object obj)
         {

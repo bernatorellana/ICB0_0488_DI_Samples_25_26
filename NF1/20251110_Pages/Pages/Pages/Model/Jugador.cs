@@ -1,6 +1,8 @@
-﻿namespace GestioDequips.Model
+﻿using System.ComponentModel;
+
+namespace GestioDequips.Model
 {
-    public class Jugador : Persona
+    public class Jugador : Persona , INotifyPropertyChanged
     {
         private int dorsal;
 
@@ -13,7 +15,6 @@
 
         public int Dorsal { get => dorsal; set => dorsal = value; }
 
-
-        
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
