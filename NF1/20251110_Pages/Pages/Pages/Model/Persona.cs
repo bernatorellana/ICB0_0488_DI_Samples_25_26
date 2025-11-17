@@ -29,7 +29,18 @@ namespace GestioDequips.Model
                 id = value;
             }
         }
-        public string Nom { get => nom; set => nom = value; }
+        public string Nom { get => nom; set
+            {
+                if (!validaNom(value)) throw new Exception("Nom incorrecte");
+                nom = value;
+            }
+        }
+
+        public static bool validaNom(string nom)
+        {
+            return !(nom == null || nom.Trim().Length < 4);
+        }
+
         public string Cognoms { get => congnoms; set => congnoms = value; }
         public string Nacionalitat { get => nacionalitat; set => nacionalitat = value; }
         public string UrlFoto { get => urlFoto; set => urlFoto = value; }

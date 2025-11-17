@@ -52,6 +52,11 @@ namespace Pages
         {
 
             frmMain.LoadCompleted += PaginaEdicioJugador.NavigationService_LoadCompleted;
+            // Teniu l'alternativa de passar dels events LoadCompleted
+            // i subministrar el paràmetre a la pàgina de destí mitjançant
+            // una propietat (que haureu de crear! )
+            //-----------------------------------------------------------------
+            //PaginaEdicioJugador.TheJugador = jugador;
             frmMain.Navigate(PaginaEdicioJugador, jugador);
         }
     }

@@ -23,11 +23,11 @@
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="imgFoto" Margin="10"></Image>
+        <Image Width="100" Source="{Binding UrlFoto}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="imgFoto" Margin="10"></Image>
         <Label HorizontalContentAlignment="Right" Grid.Row="1" Grid.Column="0"  Margin="10">Dorsal:</Label>
         <Label HorizontalContentAlignment="Right"  Grid.Row="2" Grid.Column="0" Margin="10" >Cognoms:</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtDorsal" Margin="10"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtCognoms" Margin="10"></TextBox>
+        <TextBox Text="{Binding Dorsal, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" x:Name="txtDorsal" Margin="10"></TextBox>
+        <TextBox Text="{Binding Cognoms,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" x:Name="txtCognoms" Margin="10"></TextBox>
         <Button x:Name="btnBack" Click="btnBack_Click" Grid.Row="3" Grid.Column="0" Margin="10" HorizontalAlignment="Center"  Padding="10">Back</Button>
         <Button x:Name="btnSave" Click="btnSave_Click"  Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Center"  Padding="10">Save</Button>
     </Grid>

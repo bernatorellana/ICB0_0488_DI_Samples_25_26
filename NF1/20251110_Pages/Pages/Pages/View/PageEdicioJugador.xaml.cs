@@ -1,4 +1,5 @@
 ﻿using GestioDequips.Model;
+using Pages.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Pages.View
     {
 
         private Jugador j;
+        private PageEdicioJugador_ViewModel viewModel;
 
         public PageEdicioJugador()
         {
@@ -37,13 +39,19 @@ namespace Pages.View
         {
             // Aquest és el paràmetre que m'estan passant des de la navegació !!!!!!
             object parametre = e.ExtraData;
-            if (parametre == null || !(parametre is Jugador)) throw new Exception("Paràmetre invàlid");
+            if (parametre != null && !(parametre is Jugador)) throw new Exception("Paràmetre invàlid");
 
             j = (Jugador)parametre;
+            // Creem el ViewModel
+            viewModel = new PageEdicioJugador_ViewModel(j);
 
-            txtCognoms.Text = j.Cognoms;
-            txtDorsal.Text = j.Dorsal+"";
-            //imgFoto.Source = j.UrlFoto;
+            // IMPORTANT !!!!! 
+            this.DataContext = viewModel;
+
+            
+            //txtCognoms.Text = j.Cognoms;
+            //txtDorsal.Text = j.Dorsal+"";
+            ////imgFoto.Source = j.UrlFoto;
 
             if (NavigationService != null) NavigationService.LoadCompleted -= NavigationService_LoadCompleted;
         }
@@ -60,10 +68,10 @@ namespace Pages.View
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
-            j.Cognoms = txtCognoms.Text;
-            j.Dorsal = Int32.Parse(txtDorsal.Text);
+            viewModel.save();
             NavigationService.GoBack();
         }
+
+
     }
 }

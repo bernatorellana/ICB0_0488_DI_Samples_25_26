@@ -14,10 +14,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Row="0" FontSize="20" Text="PLAYERS"></TextBlock>
 
+        <Button Grid.Row="2" Click="btnNew_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" x:Name="btnNew">New</Button>
+        
         <ListView Grid.Row="1" x:Name="lsvJugadors" MouseDoubleClick="lsvJugadors_MouseDoubleClick">
             <ListView.ItemTemplate>
                 <DataTemplate>

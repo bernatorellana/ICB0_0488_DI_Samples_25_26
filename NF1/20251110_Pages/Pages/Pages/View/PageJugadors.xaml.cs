@@ -40,5 +40,10 @@ namespace Pages
             // navegar cap a PageEdicioJugador passant el jugador seleccionat
             mainWindow.mostrarEdicioJugador(lsvJugadors.SelectedItem as Jugador);
         }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.mostrarEdicioJugador(null);
+        }
     }
 }
