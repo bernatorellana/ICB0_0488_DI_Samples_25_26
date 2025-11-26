@@ -8,6 +8,8 @@
         Title="MainWindow" Height="450" Width="800" Unloaded="Window_Unloaded"
         Closing="Window_Closing">
     <Grid>
+        
         <view:BongoCat x:Name="bongo"></view:BongoCat>
+
     </Grid>
 </Window>

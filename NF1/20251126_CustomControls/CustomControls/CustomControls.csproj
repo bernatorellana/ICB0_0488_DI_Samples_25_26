@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\imagenes\space.jpg" />
     <None Remove="Resources\imagenes\terra_01.png" />
     <None Remove="Resources\imagenes\terra_02.png" />
     <None Remove="Resources\imagenes\terra_03.png" />
@@ -50,6 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\imagenes\space.jpg" />
     <Resource Include="Resources\imagenes\terra_01.png" />
     <Resource Include="Resources\imagenes\terra_02.png" />
     <Resource Include="Resources\imagenes\terra_03.png" />

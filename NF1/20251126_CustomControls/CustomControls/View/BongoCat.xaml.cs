@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace CustomControls.View
     /// </summary>
     public partial class BongoCat : UserControl
     {
+        private List<BitmapImage> imatges = new List<BitmapImage>();
+        private int imageCounter = 0;
 
         //DispatcherTimer dispatcherTimer = new DispatcherTimer();
         bool filAlive = true;
@@ -31,11 +34,32 @@ namespace CustomControls.View
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Precarreguem les imatges en memòria per agilitzar l'animació
+        /// </summary>
+        public void PrecarregaImatges()
+        {
+            for (int i = 1; i <= 38; i++)
+            {
+                BitmapImage imatge = new BitmapImage();
+                imatge.BeginInit();
+                String fileNumber =  i.ToString("0#");
+                imatge.UriSource = new Uri("pack://application:,,,/resources/imagenes/terra_"+ fileNumber + ".png");
+                imatge.EndInit();
+                // Afegim la imatge a la llista
+                imatges.Add(imatge);
+            }
+        }
+
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             //dispatcherTimer.Interval = new TimeSpan(10000);
             //dispatcherTimer.Start();
             //dispatcherTimer.Tick += DispatcherTimer_Tick;
+
+            PrecarregaImatges();
 
             Thread t = new Thread(DispatcherTimer_Tick);
             filAlive = true;
@@ -59,11 +83,6 @@ namespace CustomControls.View
             {
                 // Accedim al fil d'intefície gràfica
                 Dispatcher.Invoke(DispatcherPriority.Render,  modificaAngle);
-
-
-
-               // imgTerra.Source = "/Resources/imágenes/terra_01.png";
-
                 Thread.Sleep(100);
             }
         }
@@ -75,12 +94,9 @@ namespace CustomControls.View
         // Aquesta funció modifica l'angle en el fil de UI
         private void modificaAngle()
         {
-            rotacio.Angle += 3;
-            BitmapImage imatge = new BitmapImage();
-            imatge.BeginInit();
-            imatge.UriSource = new Uri("pack://application:,,,/resources/imagenes/terra_11.png");
-            imatge.EndInit();
-            imgTerra.Source = imatge;
+            rotacio.Angle += 1;
+            imgTerra.Source = imatges[imageCounter];
+            imageCounter = (imageCounter + 1) % imatges.Count;
         }
 
  

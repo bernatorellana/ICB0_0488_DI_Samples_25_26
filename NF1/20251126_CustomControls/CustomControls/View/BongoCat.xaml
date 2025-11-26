@@ -9,9 +9,13 @@
              Loaded="UserControl_Loaded"              
              >
     <Grid>
-        <Canvas>
 
-            <Image x:Name="imgTerra"  Width="100" Height="100" Margin="350 150"    />
+        <Image Source="/Resources/imagenes/space.jpg"  Stretch="UniformToFill"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+
+        <Canvas Background="Transparent">
+
+            <Image x:Name="imgTerra"  Width="100" Height="100" Margin="350 150"  Source="/Resources/imagenes/terra_01.png"  />
 
             <!--<Ellipse Width="100" Height="100" Margin="350 150" Fill="Blue"></Ellipse>-->
 
