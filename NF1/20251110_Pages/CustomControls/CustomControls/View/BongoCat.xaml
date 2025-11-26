@@ -10,17 +10,10 @@
              >
     <Grid>
         <Canvas>
-            <Image Source="/Resources/imágenes/terra_02.png"  Height="100" Width="100"/>
 
-            <!--<Image Source="/terra.png" Height="130" Width="130" Stretch="None"  >
-                <Image.RenderTransform>
-                    <TranslateTransform X="0"></TranslateTransform>
-                </Image.RenderTransform>
-            </Image>-->
+            <Image x:Name="imgTerra"  Width="100" Height="100" Margin="350 150"    />
 
-
-
-            <Ellipse Width="100" Height="100" Margin="350 150" Fill="Blue"></Ellipse>
+            <!--<Ellipse Width="100" Height="100" Margin="350 150" Fill="Blue"></Ellipse>-->
 
             <Ellipse Width="20" Height="20"   Margin="390 190" Fill="Salmon">
                 <Ellipse.RenderTransform>

@@ -59,6 +59,11 @@ namespace CustomControls.View
             {
                 // Accedim al fil d'intefície gràfica
                 Dispatcher.Invoke(DispatcherPriority.Render,  modificaAngle);
+
+
+
+               // imgTerra.Source = "/Resources/imágenes/terra_01.png";
+
                 Thread.Sleep(100);
             }
         }
@@ -71,6 +76,11 @@ namespace CustomControls.View
         private void modificaAngle()
         {
             rotacio.Angle += 3;
+            BitmapImage imatge = new BitmapImage();
+            imatge.BeginInit();
+            imatge.UriSource = new Uri("pack://application:,,,/resources/imagenes/terra_11.png");
+            imatge.EndInit();
+            imgTerra.Source = imatge;
         }
 
  

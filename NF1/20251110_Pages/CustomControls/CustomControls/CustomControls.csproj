@@ -8,4 +8,86 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\imagenes\terra_01.png" />
+    <None Remove="Resources\imagenes\terra_02.png" />
+    <None Remove="Resources\imagenes\terra_03.png" />
+    <None Remove="Resources\imagenes\terra_04.png" />
+    <None Remove="Resources\imagenes\terra_05.png" />
+    <None Remove="Resources\imagenes\terra_06.png" />
+    <None Remove="Resources\imagenes\terra_07.png" />
+    <None Remove="Resources\imagenes\terra_08.png" />
+    <None Remove="Resources\imagenes\terra_09.png" />
+    <None Remove="Resources\imagenes\terra_10.png" />
+    <None Remove="resources\imagenes\terra_11.png" />
+    <None Remove="Resources\imagenes\terra_12.png" />
+    <None Remove="Resources\imagenes\terra_13.png" />
+    <None Remove="Resources\imagenes\terra_14.png" />
+    <None Remove="Resources\imagenes\terra_15.png" />
+    <None Remove="Resources\imagenes\terra_16.png" />
+    <None Remove="Resources\imagenes\terra_17.png" />
+    <None Remove="Resources\imagenes\terra_18.png" />
+    <None Remove="Resources\imagenes\terra_19.png" />
+    <None Remove="Resources\imagenes\terra_20.png" />
+    <None Remove="Resources\imagenes\terra_21.png" />
+    <None Remove="Resources\imagenes\terra_22.png" />
+    <None Remove="Resources\imagenes\terra_23.png" />
+    <None Remove="Resources\imagenes\terra_24.png" />
+    <None Remove="Resources\imagenes\terra_25.png" />
+    <None Remove="Resources\imagenes\terra_26.png" />
+    <None Remove="Resources\imagenes\terra_27.png" />
+    <None Remove="Resources\imagenes\terra_28.png" />
+    <None Remove="Resources\imagenes\terra_29.png" />
+    <None Remove="Resources\imagenes\terra_30.png" />
+    <None Remove="Resources\imagenes\terra_31.png" />
+    <None Remove="Resources\imagenes\terra_32.png" />
+    <None Remove="Resources\imagenes\terra_33.png" />
+    <None Remove="Resources\imagenes\terra_34.png" />
+    <None Remove="Resources\imagenes\terra_35.png" />
+    <None Remove="Resources\imagenes\terra_36.png" />
+    <None Remove="Resources\imagenes\terra_37.png" />
+    <None Remove="Resources\imagenes\terra_38.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\imagenes\terra_01.png" />
+    <Resource Include="Resources\imagenes\terra_02.png" />
+    <Resource Include="Resources\imagenes\terra_03.png" />
+    <Resource Include="Resources\imagenes\terra_04.png" />
+    <Resource Include="Resources\imagenes\terra_05.png" />
+    <Resource Include="Resources\imagenes\terra_06.png" />
+    <Resource Include="Resources\imagenes\terra_07.png" />
+    <Resource Include="Resources\imagenes\terra_08.png" />
+    <Resource Include="Resources\imagenes\terra_09.png" />
+    <Resource Include="Resources\imagenes\terra_10.png" />
+    <Resource Include="resources\imagenes\terra_11.png" />
+    <Resource Include="Resources\imagenes\terra_12.png" />
+    <Resource Include="Resources\imagenes\terra_13.png" />
+    <Resource Include="Resources\imagenes\terra_14.png" />
+    <Resource Include="Resources\imagenes\terra_15.png" />
+    <Resource Include="Resources\imagenes\terra_16.png" />
+    <Resource Include="Resources\imagenes\terra_17.png" />
+    <Resource Include="Resources\imagenes\terra_18.png" />
+    <Resource Include="Resources\imagenes\terra_19.png" />
+    <Resource Include="Resources\imagenes\terra_20.png" />
+    <Resource Include="Resources\imagenes\terra_21.png" />
+    <Resource Include="Resources\imagenes\terra_22.png" />
+    <Resource Include="Resources\imagenes\terra_23.png" />
+    <Resource Include="Resources\imagenes\terra_24.png" />
+    <Resource Include="Resources\imagenes\terra_25.png" />
+    <Resource Include="Resources\imagenes\terra_26.png" />
+    <Resource Include="Resources\imagenes\terra_27.png" />
+    <Resource Include="Resources\imagenes\terra_28.png" />
+    <Resource Include="Resources\imagenes\terra_29.png" />
+    <Resource Include="Resources\imagenes\terra_30.png" />
+    <Resource Include="Resources\imagenes\terra_31.png" />
+    <Resource Include="Resources\imagenes\terra_32.png" />
+    <Resource Include="Resources\imagenes\terra_33.png" />
+    <Resource Include="Resources\imagenes\terra_34.png" />
+    <Resource Include="Resources\imagenes\terra_35.png" />
+    <Resource Include="Resources\imagenes\terra_36.png" />
+    <Resource Include="Resources\imagenes\terra_37.png" />
+    <Resource Include="Resources\imagenes\terra_38.png" />
+  </ItemGroup>
+
 </Project>
