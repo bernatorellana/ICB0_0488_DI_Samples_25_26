@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cartes.Model
 {
-    internal enum Pal
+    public enum Pal
     {
         COR,
         DIAMANT,

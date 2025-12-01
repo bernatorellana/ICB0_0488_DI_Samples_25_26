@@ -20,15 +20,14 @@
             <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <Image Visibility="Hidden" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="3" Stretch="UniformToFill" Source="/Resources/back.png" />
 
         <Grid Grid.Column="0" Grid.Row="0" Margin="30">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="50" Grid.Row="0">2</TextBlock>
-            <TextBlock FontSize="50" Grid.Row="1">♣</TextBlock>
+            <TextBlock x:Name="txtRang1" FontSize="50" Grid.Row="0">2</TextBlock>
+            <TextBlock x:Name="txtPal1"  FontSize="50" Grid.Row="1">♣</TextBlock>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="2" Margin="30" >
              <Grid.RenderTransform>
@@ -38,8 +37,11 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="50" Grid.Row="0">2</TextBlock>
-            <TextBlock FontSize="50" Grid.Row="1">♣</TextBlock>
+            <TextBlock x:Name="txtRang2" FontSize="50" Grid.Row="0">2</TextBlock>
+            <TextBlock x:Name="txtPal2"  FontSize="50" Grid.Row="1">♣</TextBlock>
         </Grid>
+
+        <Image x:Name="imgBack" Visibility="Hidden" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="3" Stretch="UniformToFill" Source="/Resources/back.png" />
+
     </Grid>
 </UserControl>
