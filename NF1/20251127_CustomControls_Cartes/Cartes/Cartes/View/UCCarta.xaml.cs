@@ -47,10 +47,13 @@ namespace Cartes.View
         public void OnPalChanged()
         {
             txtPal1.Text = PalStrings[DasPal];
+            txtPal1.Foreground = new SolidColorBrush( PalColors[DasPal] );
+
         }
 
         public void OnRangChanged()
         {
+
         }
 
         public void OnVisibleChanged()
