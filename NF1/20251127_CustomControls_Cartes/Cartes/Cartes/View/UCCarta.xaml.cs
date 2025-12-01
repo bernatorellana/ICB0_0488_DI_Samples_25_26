@@ -114,7 +114,8 @@ namespace Cartes.View
 
         }
 
-        private void UserControl_TouchDown(object sender, System.Windows.Input.TouchEventArgs e)
+
+        private void UserControl_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Girada = !Girada;
         }

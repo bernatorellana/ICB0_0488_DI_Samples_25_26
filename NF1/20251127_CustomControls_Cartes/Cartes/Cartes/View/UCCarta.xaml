@@ -8,7 +8,7 @@
              d:DesignHeight="1000" d:DesignWidth="800" 
              SizeChanged="UserControl_SizeChanged"
              Loaded="UserControl_Loaded"
-             TouchDown="UserControl_TouchDown"
+             MouseDown="UserControl_MouseDown"
              >
     <Border x:Name="borde"  BorderBrush="Black" BorderThickness="3">
     <Grid Background="White">
@@ -47,7 +47,7 @@
         </Grid>
 
         <Image x:Name="imgBack" Visibility="Visible" 
-               TouchDown="UserControl_TouchDown"
+               IsHitTestVisible="True"
                Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="3" Stretch="UniformToFill" Source="/Resources/back.png" />
 
     </Grid>
