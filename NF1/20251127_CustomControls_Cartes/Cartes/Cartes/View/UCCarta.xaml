@@ -5,7 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cartes.View"
              mc:Ignorable="d" 
-             d:DesignHeight="1000" d:DesignWidth="800">
+             d:DesignHeight="1000" d:DesignWidth="800" 
+             SizeChanged="UserControl_SizeChanged"
+             Loaded="UserControl_Loaded"
+             TouchDown="UserControl_TouchDown"
+             >
+    <Border x:Name="borde"  BorderBrush="Black" BorderThickness="3">
     <Grid Background="White">
         
 
@@ -21,7 +26,7 @@
         </Grid.ColumnDefinitions>
         
 
-        <Grid Grid.Column="0" Grid.Row="0" Margin="30">
+        <Grid Grid.Column="0" Grid.Row="0" Margin="30" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -41,7 +46,11 @@
             <TextBlock x:Name="txtPal2"  FontSize="50" Grid.Row="1">♣</TextBlock>
         </Grid>
 
-        <Image x:Name="imgBack" Visibility="Hidden" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="3" Stretch="UniformToFill" Source="/Resources/back.png" />
+        <Image x:Name="imgBack" Visibility="Visible" 
+               TouchDown="UserControl_TouchDown"
+               Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="3" Stretch="UniformToFill" Source="/Resources/back.png" />
 
     </Grid>
+    </Border>
+
 </UserControl>
