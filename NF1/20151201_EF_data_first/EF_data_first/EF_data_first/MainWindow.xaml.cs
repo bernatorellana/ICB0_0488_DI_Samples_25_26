@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using EF_data_first.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,7 +21,23 @@ namespace EF_data_first
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            AppDbContext context = new AppDbContext();
+
+            // Consulta "select * from"
+            departaments.ItemsSource = context.Depts.ToList<Dept>();
+
+    
+        }
+
+        private void empleats_Selected(object sender, RoutedEventArgs e)
+        {
+            Emp em = empleats.SelectedItem as Emp;
+            if (em != null)
+            {
+                clients.ItemsSource = em.Clients;
+            }
         }
     }
 }
