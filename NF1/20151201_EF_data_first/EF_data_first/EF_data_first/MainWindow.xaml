@@ -21,8 +21,8 @@
         <Label Grid.Column="1" Grid.Row="0">Empleats</Label>
         <Label Grid.Column="2" Grid.Row="0">Clients</Label>
         
-        <DataGrid x:Name="departaments" Grid.Row="1" Grid.Column="0"  ></DataGrid>
-        <DataGrid x:Name="empleats" Grid.Row="1" Grid.Column="1" SelectionChanged="empleats_Selected"></DataGrid>
-        <DataGrid x:Name="clients" Grid.Row="1" Grid.Column="2"></DataGrid>
+        <DataGrid x:Name="dtgDepartaments" Grid.Row="1" Grid.Column="0" SelectionChanged="dtgDepartaments_SelectionChanged" ></DataGrid>
+        <DataGrid x:Name="dtgEmpleats" Grid.Row="1" Grid.Column="1" SelectionChanged="empleats_Selected"></DataGrid>
+        <DataGrid x:Name="dtgCients" Grid.Row="1" Grid.Column="2"></DataGrid>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using EF_data_first.Models;
+﻿
+using EF_data_first.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
@@ -19,25 +20,48 @@ namespace EF_data_first
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AppDbContext context;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            AppDbContext context = new AppDbContext();
+            context = new AppDbContext();
 
-            // Consulta "select * from"
-            departaments.ItemsSource = context.Depts.ToList<Dept>();
+            dtgDepartaments.ItemsSource = context.Depts.Include(d => d.Emps).ToList();
 
-    
-        }
+
+         }
+
+         private void dtgDepartaments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+         {
+            Dept deptSeleccionat = dtgDepartaments.SelectedItem as Dept;
+            if (deptSeleccionat != null)
+            {
+                List<Emp> empleatsDelDepartament = context.Emps.Where(e => e.DeptNo == deptSeleccionat.DeptNo).ToList<Emp>();
+
+                dtgEmpleats.ItemsSource = empleatsDelDepartament;
+            }
+         }
+
+        /*private void dtgDepartaments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Dept deptSeleccionat = dtgDepartaments.SelectedItem as Dept;
+
+            dtgEmpleats.ItemsSource = deptSeleccionat.Emps;
+            
+        }*/
+
 
         private void empleats_Selected(object sender, RoutedEventArgs e)
         {
-            Emp em = empleats.SelectedItem as Emp;
+           /* Emp em = empleats.SelectedItem as Emp;
             if (em != null)
             {
                 clients.ItemsSource = em.Clients;
-            }
+            }*/
         }
+
+
     }
 }
