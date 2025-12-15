@@ -1,4 +1,10 @@
-﻿using System.IO;
+﻿using PDFQuest.DataAdapter;
+using PDFQuest.Template;
+using QuestPDF.Companion;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,10 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
 
 namespace PDFQuest
 {
@@ -28,8 +30,24 @@ namespace PDFQuest
         private void btnPDF_Click(object sender, RoutedEventArgs e)
         {
             QuestPDF.Settings.License = LicenseType.Community;
+
+            var model = InvoiceDocumentDataSource.GetInvoiceDetails();
+            var document = new InvoiceDocument(model);
+            
+
+            document.GeneratePdf("invoice.pdf");
+
+            document.ShowInCompanionAsync();
+            String path = Path.GetFullPath("invoice.pdf");
+
+            BrowserView.Source = new Uri("file:///" + path);
+
+
+        }
+        /*{
+            QuestPDF.Settings.License = LicenseType.Community;
             // code in your main method
-            Document.Create(container =>
+            Document d = Document.Create(container =>
             {
                 container.Page(page =>
                 {
@@ -48,7 +66,8 @@ namespace PDFQuest
                         {
                             x.Spacing(20);
 
-                            x.Item().Text(Placeholders.LoremIpsum());
+                            x.Item().Text(Placeholders.LoremIpsum()).FontSize(12);
+                            x.Item().Text(Placeholders.LoremIpsum()).FontSize(12);
                             x.Item().Image(Placeholders.Image(200, 100));
                         });
 
@@ -60,14 +79,17 @@ namespace PDFQuest
                             x.CurrentPageNumber();
                         });
                 });
-            })//.GeneratePdfAndShow();
-            .GeneratePdf("hello.pdf");
+            });//.GeneratePdfAndShow();
+
+            d.GeneratePdf("hello.pdf");
+           
+            d.ShowInCompanionAsync();
             String path = Path.GetFullPath("hello.pdf");
 
             BrowserView.Source= new Uri("file:///"+path);
 
 
 
-        }
+        }*/
     }
 }
