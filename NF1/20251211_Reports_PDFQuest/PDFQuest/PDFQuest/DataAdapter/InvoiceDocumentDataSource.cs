@@ -16,7 +16,7 @@ namespace PDFQuest.DataAdapter
         public static InvoiceModel GetInvoiceDetails()
         {
             var items = Enumerable
-                .Range(1, 8)
+                .Range(1, 40)
                 .Select(i => GenerateRandomOrderItem())
                 .ToList();
 

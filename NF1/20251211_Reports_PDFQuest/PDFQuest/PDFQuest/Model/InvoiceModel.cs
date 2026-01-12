@@ -17,6 +17,13 @@ namespace PDFQuest.Model
 
         public List<OrderItem> Items { get; set; }
         public string Comments { get; set; }
+
+        public decimal GetTotalAmount()
+        {
+            decimal amount = 0;
+            Items.ForEach(i => amount += i.Price * i.Quantity);
+            return amount;
+        }
     }
 
     public class OrderItem
