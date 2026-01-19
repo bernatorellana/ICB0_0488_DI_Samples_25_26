@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="TestProject1/TestProject1.csproj" />
+  <Project Path="TestProject/TestProject.csproj" Id="9978f063-ec0c-43da-b23e-d073fb82a352" />
   <Project Path="WpfTestingTeatre/WpfTestingTeatre.csproj" />
 </Solution>

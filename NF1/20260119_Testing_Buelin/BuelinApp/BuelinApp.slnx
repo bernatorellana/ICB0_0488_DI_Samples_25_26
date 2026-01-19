@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BuelinApp/BuelinApp.csproj" />
+  <Project Path="TestProject/TestProject.csproj" />
+</Solution>

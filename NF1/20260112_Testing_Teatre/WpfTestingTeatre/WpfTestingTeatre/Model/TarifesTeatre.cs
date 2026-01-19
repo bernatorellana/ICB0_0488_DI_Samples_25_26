@@ -10,8 +10,12 @@ namespace WpfTestingTeatre.Model
         public static decimal getPreu(int tipus_seient, int edat)
         {
 
+            if(edat<-10 && tipus_seient<400) throw new Exception("QUI ETS?");
+
             if (tipus_seient <= 0 || tipus_seient > 4) throw new Exception("Tipus de seient erroni");
             if (edat <= 0 || edat >= 120) throw new Exception("Edat erronia");
+
+
 
 
             /*
@@ -32,8 +36,7 @@ namespace WpfTestingTeatre.Model
                 }
             }
 
-            decimal result = 0;
-            return result;
+
         }
 
     }

@@ -1,16 +1,14 @@
-﻿using WpfTestingTeatre.Model; 
+﻿using WpfTestingTeatre.Model;
 
-namespace TestProject1
+namespace TestProject
 {
     [TestClass]
-    public  class TestTarifesTeatre
+    public sealed class Test1
     {
-
-
         [TestMethod]
         public void TestGetPreu_ForaRang()
         {
-            int[,] valors =  new int[,] {
+            int[,] valors = new int[,] {
                                     { 1,-15},
                                     { -1,40},
                                     { 0,40},
@@ -23,7 +21,7 @@ namespace TestProject1
             {
                 Microsoft.VisualStudio.TestTools.UnitTesting.Assert.Throws<Exception>(() =>
                 {
-                    TarifesTeatre.getPreu(valors[i,0], valors[i, 1]);
+                    TarifesTeatre.getPreu(valors[i, 0], valors[i, 1]);
                 });
             }
         }
@@ -34,7 +32,7 @@ namespace TestProject1
         [TestMethod]
         public void TestGetPreu()
         {
-    
+
             Assert.AreEqual(0, TarifesTeatre.getPreu(1, 3));
             Assert.AreEqual(45, TarifesTeatre.getPreu(1, 4));
             Assert.AreEqual(45, TarifesTeatre.getPreu(1, 7));
