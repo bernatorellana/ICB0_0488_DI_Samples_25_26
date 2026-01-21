@@ -29,17 +29,17 @@ namespace TestProject
             
 
             Assert.AreEqual(0m, b.getSobrecostPerEquipatge(null, null, null, false));
-            Assert.AreEqual(0m, b.getSobrecostPerEquipatge([30, 30, 30], null, null, false));
-            Assert.AreEqual(60m, b.getSobrecostPerEquipatge([31, 30, 30], null, null, false));
-            Assert.AreEqual(60m, b.getSobrecostPerEquipatge([30, 31, 30], null, null, false));
-            Assert.AreEqual(60m, b.getSobrecostPerEquipatge([30, 30, 31], null, null, false));
-            Assert.AreEqual(20m, b.getSobrecostPerEquipatge([30, 30, 30], null, null, false));
+            Assert.AreEqual(0m, b.getSobrecostPerEquipatge([30, 30, 30], 20, null, false));
+            Assert.AreEqual(60m, b.getSobrecostPerEquipatge([31, 30, 30], 20, null, false));
+            Assert.AreEqual(60m, b.getSobrecostPerEquipatge([30, 31, 30], 20, null, false));
+            Assert.AreEqual(60m, b.getSobrecostPerEquipatge([30, 30, 31], 20, null, false));
+            Assert.AreEqual(20m, b.getSobrecostPerEquipatge([30, 30, 30], 21, null, false));
             Assert.AreEqual(0m, b.getSobrecostPerEquipatge(null, 20, [20, 20], false));
             Assert.AreEqual(20m, b.getSobrecostPerEquipatge(null, 20, [20, 21], false));
             Assert.AreEqual(200m, b.getSobrecostPerEquipatge(null, 20, [20, 20, 20], false));
             Assert.AreEqual(220m, b.getSobrecostPerEquipatge(null, 20, [20, 21, 20], false));
-            Assert.AreEqual(280m, b.getSobrecostPerEquipatge([30, 31, 30,], 20, [20, 21, 20], false));
-            Assert.AreEqual(282m, b.getSobrecostPerEquipatge([30, 31, 30,], 20, [20, 21, 20], true));
+            Assert.AreEqual(280m, b.getSobrecostPerEquipatge([30, 31, 30], 20, [20, 21, 20], false));
+            Assert.AreEqual(282m, b.getSobrecostPerEquipatge([30, 31, 30], 20, [20, 21, 20], true));
             Assert.AreEqual(0m, b.getSobrecostPerEquipatge(null, null, null, true));
         }
     }
