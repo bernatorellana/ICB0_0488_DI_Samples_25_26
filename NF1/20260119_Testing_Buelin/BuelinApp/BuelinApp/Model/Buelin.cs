@@ -10,7 +10,7 @@ namespace BuelinApp.Model
     public class Buelin
     {
         public decimal getSobrecostPerEquipatge(
-            int[] midaEquipatgeMaCm,
+            int?[] midaEquipatgeMaCm,
             int? pesEquipatgeMa,
             int[] pesMaletes,
             bool pagaAmbTarja)
