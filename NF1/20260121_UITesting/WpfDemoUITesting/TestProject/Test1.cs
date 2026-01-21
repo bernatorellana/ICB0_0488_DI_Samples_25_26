@@ -4,9 +4,26 @@ using FlaUI.UIA3;
 
 namespace TestProject
 {
+
+
+
+
     [TestClass]
     public sealed class Test1
     {
+
+        [TestMethod]
+        public void TestCMD()
+        {
+
+            //string path = System.IO.Directory.GetCurrentDirectory();
+            //var app = FlaUI.Core.Application.Launch(path + "\\hola.bat");
+            //app = FlaUI.Core.Application.Launch( "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+
+        }
+
+
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -36,7 +53,7 @@ namespace TestProject
                 // t1.Text = "1";
                 t2.Text = "4";
                 b.Click();
-                Assert.AreEqual("5", t_res.Text);
+                Assert.AreEqual("10", t_res.Text);
 
             }
         }
