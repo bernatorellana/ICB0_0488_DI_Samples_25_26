@@ -57,15 +57,15 @@ namespace BuelinApp.Model
             if(pesMaletes!= null)
             for (int i = 0; i < pesMaletes.Length; i++)
             {
-                    if (i < 2)
-                    {
-                        sobrecostMaletes += (pesMaletes[i] - 20) * 20;
-                    }
-                    else
-                    {
-                        sobrecostMaletes += pesMaletes[i] * 10;
-                    }
-                    }
+                if (i < 2)
+                {
+                    sobrecostMaletes += (pesMaletes[i] - 20) * 20;
+                }
+                else
+                {
+                    sobrecostMaletes += pesMaletes[i] * 10;
+                }
+          }
             
            
 
