@@ -1,0 +1,97 @@
+:root {
+  color-scheme: light dark;
+  --light-color: #282828;
+  --dark-color: #d6d6d6;
+  --light-background-color: white;
+  --dark-background-color: #1f1f1f;
+  --light-tool-background-color: #f0f0f0;
+  --dark-tool-background-color: #403E41;
+}
+BODY {
+	color: light-dark(var(--light-color), var(--dark-color));
+	background-color: light-dark(var(--light-background-color), var(--dark-background-color));
+	margin: 0;
+	padding: 0;  /* for Opera (7.11) */
+	font: small verdana, arial, sans-serif;
+}
+TD, .normal {
+	/* TD is for IE < 6 */
+	font: small verdana, arial, sans-serif;
+}
+H1, .xxbig {
+	font: bold xx-large verdana, arial, sans-serif;
+}
+H2, .xbig {
+	font: bold x-large verdana, arial, sans-serif;
+}
+H3, .big {
+	font: bold large verdana, arial, sans-serif;
+}
+H4, .medium {
+	font: bold medium verdana, arial, sans-serif;
+}
+.small {
+	font-size: x-small;
+}
+PRE, TT {
+	font: small "courier new", monospace;
+}
+LI {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+P, H1, H2, H3, H4, H5, BLOCKQUOTE, PRE, FORM, OL, UL, UL.linespace LI {
+	/* for paragraph spacing consistency between IE (6) and Mozilla (1.4) */
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+A:link, A:visited {
+	color: light-dark(hsl(206, 100%, 37%), hsl(206, 100%, 50%));
+	background-color: transparent;
+	text-decoration: none;
+}
+A[href]:hover {
+	color: light-dark(hsl(206, 100%, 27%), hsl(206, 100%, 43%));
+	text-decoration: underline;
+}
+IMG {
+	border: 0;
+}
+TABLE.standard {
+	width: 100%;
+	border: 0;
+	/* IE (6) doesn't support border-spacing, so we have to continue using cellspacing="1"
+	border-collapse: separate;
+	border-spacing: 1px;
+	*/
+}
+TABLE.standard TH {
+	padding: 4px;
+	background-color: hsl(206, 100%, 30%);
+	color: white;
+	text-align: left;
+	font-weight: bold;
+}
+TABLE.standard TD {
+	padding: 4px;
+	background-color: light-dark(var(--light-tool-background-color), var(--dark-tool-background-color));
+}
+.whitebar {
+	background-color: light-dark(var(--light-tool-background-color), var(--dark-tool-background-color)); /* #e0e0e0 */
+	color: light-dark(var(--light-color), var(--dark-color));
+	padding: 5px;
+	margin: 0;
+}
+.bluebar {
+	background-color: hsl(206, 100%, 30%);
+	padding: 5px;
+	margin: 0;
+	color: white;
+}
+.leftheading {
+	background: hsl(206, 100%, 30%);
+	padding: 3px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
